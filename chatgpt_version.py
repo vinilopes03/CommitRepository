@@ -93,3 +93,20 @@ def parse_cve_page(url):
     except Exception as e:
         print(f"❌ Error parsing {url}: {e}")
         return []
+
+
+# Commit 6: Define function get_daily_links
+def get_daily_links(month_url):
+    try:
+        res = requests.get(month_url, timeout=10)
+        res.raise_for_status()
+        soup = BeautifulSoup(res.text, "html.parser")
+        links = [
+            f"{month_url}{a['href']}"
+            for a in soup.find_all("a", href=True)
+            if a.text.startswith("CVE-")
+        ]
+        return links
+    except Exception as e:
+        print(f"Error accessing {month_url}: {e}")
+        return []
