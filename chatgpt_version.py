@@ -49,3 +49,9 @@ def extract_commit_pairs(text):
             pairs.append(("", fix))
 
     return pairs
+
+
+# Commit 4: Define helper function get_repository
+def get_repository(text):
+    match = re.search(r"https://git\.kernel\.org[^ \n\"]+", text)
+    return match.group(0) if match else ""
