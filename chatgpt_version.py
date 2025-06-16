@@ -94,3 +94,42 @@ def parse_cve_page(url):
     except Exception as e:
         print(f"❌ Error parsing {url}: {e}")
         return []
+
+
+def get_daily_links(month_url):
+    try:
+        res = requests.get(month_url, timeout=10)
+        res.raise_for_status()
+        soup = BeautifulSoup(res.text, "html.parser")
+        links = [
+            f"{month_url}{a['href']}"
+            for a in soup.find_all("a", href=True)
+            if a.text.startswith("CVE-")
+        ]
+        return links
+    except Exception as e:
+        print(f"Error accessing {month_url}: {e}")
+        return []
+
+def main():
+    print(f"📁 Writing to: {os.path.abspath(OUTPUT_FILE)}")
+    months = month_range(START_YEAR_MONTH, END_YEAR_MONTH)
+
+    for month in months:
+        print(f"\n📅 Month: {month}")
+        month_url = f"{BASE_URL}/{month}/"
+        links = get_daily_links(month_url)
+        print(f"🔗 Found {len(links)} CVE links.")
+
+        for url in links:
+            rows = parse_cve_page(url)
+            if rows:
+                save_results(rows)
+            else:
+                print(f"⚠️ Skipping save: No data extracted from {url}")
+            time.sleep(0.5)  # politeness delay
+
+    print("✅ Done.")
+
+if __name__ == "__main__":
+    main()
