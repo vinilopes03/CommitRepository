@@ -11,3 +11,8 @@ def month_range(start, end):
                 continue
             months.append(f"{year:04d}/{month:02d}")
     return months
+
+
+def get_repository(text):
+    match = re.search(r"https://git\.kernel\.org[^ \n\"]+", text)
+    return match.group(0) if match else ""
