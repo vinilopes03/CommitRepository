@@ -9,6 +9,7 @@ import testcasesupport.*;
 
 public class CWE835_Infinite_Loop__for_01 extends AbstractTestCase 
 {
+    // Method to demonstrate bad practice of an infinite loop
     public void bAd()
     {
         /* FLAW: Infinite Loop - for() with no break point */
@@ -18,6 +19,7 @@ public class CWE835_Infinite_Loop__for_01 extends AbstractTestCase
         }
     }
     
+    // Method with a fix to add a break point in the loop
     private void gOoD1() 
     {
         for (int i = 0; i >= 0; i = (i + 1) % 256)
@@ -31,6 +33,7 @@ public class CWE835_Infinite_Loop__for_01 extends AbstractTestCase
         }
     }
     
+    // Method with a fix to add a break point in the loop
     private void gOoD2() 
     {
         /* FIX: Add a break point for the loop if i = 10 */
@@ -40,6 +43,7 @@ public class CWE835_Infinite_Loop__for_01 extends AbstractTestCase
         }
     }
     
+    // Method to demonstrate good practice with added break points
     public void gOoD()  
     {
         gOoD1();
