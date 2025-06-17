@@ -1,4 +1,4 @@
-// Updated the help message
+// Added Main class
 package testcases.CWE835_Infinite_Loop;
 
 import testcasesupport.*;
@@ -11,4 +11,4 @@ public class Main {
 		
 			if(args[0].equals("-h") || args[0].equals("--help")) {
 		
-				System.err.println("To use this main, you can either run the program with no command line arguments...");
+				System.err.println("To use this main, you can either run the program with...
