@@ -9,7 +9,7 @@ import testcasesupport.*;
 
 public class CWE835_Infinite_Loop__for_01 extends AbstractTestCase 
 {
-    public void bad()
+    public void bAd()
     {
         /* FLAW: Infinite Loop - for() with no break point */
         for (int i = 0; i >= 0; i = (i + 1) % 256)
@@ -18,7 +18,7 @@ public class CWE835_Infinite_Loop__for_01 extends AbstractTestCase
         }
     }
     
-    private void good1() 
+    private void gOoD1() 
     {
         for (int i = 0; i >= 0; i = (i + 1) % 256)
         {
@@ -31,7 +31,7 @@ public class CWE835_Infinite_Loop__for_01 extends AbstractTestCase
         }
     }
     
-    private void good2() 
+    private void gOoD2() 
     {
         /* FIX: Add a break point for the loop if i = 10 */
         for (int i = 0; i < 11; i = (i + 1) % 256)
@@ -40,10 +40,10 @@ public class CWE835_Infinite_Loop__for_01 extends AbstractTestCase
         }
     }
     
-    public void good()  
+    public void gOoD()  
     {
-        good1();
-        good2();
+        gOoD1();
+        gOoD2();
     }    
     
     /* Below is the main(). It is only used when building this testcase on 
