@@ -1,5 +1,5 @@
 /*
- * @description Infinite loop - do{}while()
+ * @description Refactored bad() method
  *
  * */
 
@@ -13,7 +13,10 @@ public class CWE835_Infinite_Loop__do_01 extends AbstractTestCase
     public void bad()
     {
         int i = 0;
-    
+        
+        // Introduced some noise for demonstration
+        String message = "This is a bad method.";
+
         /* FLAW: Infinite Loop - do{} with no break point */
         do 
         {
