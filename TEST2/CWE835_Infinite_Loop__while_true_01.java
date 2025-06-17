@@ -10,6 +10,7 @@ import testcasesupport.*;
 public class CWE835_Infinite_Loop__while_true_01 extends AbstractTestCase 
 {
     
+    // Triggering bad case
     public void bad()
     {
         int i = 0;
@@ -22,6 +23,7 @@ public class CWE835_Infinite_Loop__while_true_01 extends AbstractTestCase
         }
     }
     
+    // Fixing the infinite loop
     private void good1() 
     {
         int i = 0;
