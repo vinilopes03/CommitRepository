@@ -9,6 +9,9 @@ import testcasesupport.*;
 
 public class CWE835_Infinite_Loop__while_01 extends AbstractTestCase 
 {    
+    /**
+     * @description Contains the vulnerable code with an infinite loop.
+     */
     public void bad()
     {
         int i = 0;
@@ -21,6 +24,9 @@ public class CWE835_Infinite_Loop__while_01 extends AbstractTestCase
         }
     }
     
+    /**
+     * @description Contains the fixed code with a break point added to the loop.
+     */
     private void good1() 
     {
         int i = 0;
@@ -38,6 +44,9 @@ public class CWE835_Infinite_Loop__while_01 extends AbstractTestCase
         }
     }
     
+    /**
+     * @description Entry method for the good code path.
+     */
     public void good()  
     {
         good1();
