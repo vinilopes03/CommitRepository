@@ -9,7 +9,7 @@ import testcasesupport.*;
 
 public class CWE835_Infinite_Loop__for_empty_01 extends AbstractTestCase 
 {    
-    public void bad()
+    public void createInfiniteLoop()
     {
         int i = 0;
         
@@ -21,7 +21,7 @@ public class CWE835_Infinite_Loop__for_empty_01 extends AbstractTestCase
         }
     }
     
-    private void good1() 
+    private void createLoopWithBreak()
     {
         int i = 0;
         
@@ -38,9 +38,9 @@ public class CWE835_Infinite_Loop__for_empty_01 extends AbstractTestCase
         }
     }
     
-    public void good()  
+    public void callGoodMethod()  
     {
-        good1();
+        createLoopWithBreak();
     }    
     
     /* Below is the main(). It is only used when building this testcase on 
