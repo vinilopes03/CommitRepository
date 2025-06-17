@@ -1,5 +1,5 @@
 /*
- * @description Refactored bad() method
+ * @description Refactored good1() method
  *
  * */
 
@@ -37,6 +37,9 @@ public class CWE835_Infinite_Loop__do_01 extends AbstractTestCase
                 break; 
             }
             
+            // Introduced some noise for demonstration
+            String debugInfo = "Loop iteration: " + i;
+
             IO.writeLine(i);
             i = (i + 1) % 256;
         } while(i >= 0);
