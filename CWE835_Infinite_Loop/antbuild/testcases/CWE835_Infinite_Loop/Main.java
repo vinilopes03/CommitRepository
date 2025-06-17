@@ -1,1 +1,1 @@
-// No code changes, initial setup
+// No code changes, initial project setup
