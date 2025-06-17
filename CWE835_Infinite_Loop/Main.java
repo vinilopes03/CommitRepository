@@ -1,1 +1,2 @@
-// No changes, initial file
+System.err.println("To use this main, you can either run the program with no " +
+"command line arguments, or you can provide a command line argument with ...
