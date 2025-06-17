@@ -9,45 +9,51 @@ import testcasesupport.*;
 
 public class CWE835_Infinite_Loop__while_01 extends AbstractTestCase 
 {    
+    // This is a bad method with an infinite loop
     public void bad()
     {
+        // Start at 0
         int i = 0;
     
-        /* FLAW: Infinite Loop - while() with no break point */
+        // Infinite loop with no break point
         while (i >= 0)
         {
+            // Print the value of i
             IO.writeLine(i);
+            // Increment i by 1 and wrap around at 256
             i = (i + 1) % 256;
         }
     }
     
+    // This is a good method with a break point
     private void good1() 
     {
+        // Start at 0
         int i = 0;
 
+        // Loop until i reaches 10
         while (i >= 0)
         {
-            /* FIX: Add a break point for the loop if i = 10 */
+            // Add a break point once i equals 10
             if (i == 10) 
             { 
                 break; 
             }
 
+            // Print the value of i
             IO.writeLine(i);
+            // Increment i by 1 and wrap around at 256
             i = (i + 1) % 256;
         }
     }
     
+    // Wrapper method for the good1() method
     public void good()  
     {
         good1();
     }    
     
-    /* Below is the main(). It is only used when building this testcase on 
-     * its own for testing or for building a binary to use in testing binary 
-     * analysis tools. It is not used when compiling all the testcases as one 
-     * application, which is how source code analysis tools are tested. 
-	 */ 
+    // Main method for standalone testing
     public static void main(String[] args) 
             throws ClassNotFoundException, InstantiationException, IllegalAccessException 
     {
