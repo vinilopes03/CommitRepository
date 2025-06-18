@@ -14,5 +14,9 @@ public class ServletMain extends HttpServlet {
 
 }
 
+public void doPost(HttpServletRequest request, HttpServletResponse response) {
+		doGet(request, response);
+	}
+
 
 }
