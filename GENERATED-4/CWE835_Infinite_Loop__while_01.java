@@ -62,3 +62,16 @@ public void bad()
         IO.writeLine(i);
     }
 }
+
+
+public void bad()
+{
+    for (int i = 0; i >= 0; i = (i + 1) % 256)
+    {
+        IO.writeLine(i);
+        if (i == 10) 
+        { 
+            break; 
+        }
+    }
+}
