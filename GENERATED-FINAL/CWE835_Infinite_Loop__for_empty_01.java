@@ -10,3 +10,13 @@ import testcasesupport.*;
 public class CWE835_Infinite_Loop__for_empty_01 extends AbstractTestCase 
 {
 
+public void infiniteLoop() {
+    int i = 0;
+
+    for (;;) {
+        IO.writeLine(i);
+        i++;
+    }
+}
+
+}
