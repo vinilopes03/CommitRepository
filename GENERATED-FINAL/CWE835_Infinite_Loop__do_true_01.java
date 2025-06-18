@@ -10,18 +10,3 @@ import testcasesupport.*;
 public class CWE835_Infinite_Loop__do_true_01 extends AbstractTestCase 
 {
 
-if (i == 10) {
-    break;
-}
-
-int i = 0;
-while(true) {
-    if (i == 10) {
-        break;
-    }
-    
-    IO.writeLine(i);
-    i++;
-}
-
-}
