@@ -10,3 +10,8 @@ import testcasesupport.*;
 public class CWE835_Infinite_Loop__while_true_01 extends AbstractTestCase 
 {
 
+private boolean shouldBreak(int i) {
+    return i == 10;
+}
+
+}
