@@ -16,5 +16,16 @@ private void breakInfiniteLoop(int i) {
         }
     }
 
+private void good1() {
+        int i = 0;
+
+        while (i >= 0) {
+            breakInfiniteLoop(i);
+
+            IO.writeLine(i);
+            i = (i + 1) % 256;
+        }
+    }
+
 
 }
