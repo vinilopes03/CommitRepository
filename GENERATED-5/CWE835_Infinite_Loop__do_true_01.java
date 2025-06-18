@@ -16,4 +16,11 @@ if (i == 10)
     break; 
 }
 
+public void bad()
+{
+    int i = 0;
+
+    good1();
+}
+
 }
