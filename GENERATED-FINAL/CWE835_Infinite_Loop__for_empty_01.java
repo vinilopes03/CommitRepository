@@ -19,4 +19,17 @@ public void infiniteLoop() {
     }
 }
 
+public void infiniteLoopWithBreak() {
+    int i = 0;
+
+    for (;;) {
+        if (i == 10) {
+            break;
+        }
+        
+        IO.writeLine(i);
+        i++;
+    }
+}
+
 }
