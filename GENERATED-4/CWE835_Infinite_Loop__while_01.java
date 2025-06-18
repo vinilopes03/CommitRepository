@@ -1,5 +1,5 @@
 /*
- * @description Initialize CWE835_Infinite_Loop__while_01 class
+ * @description Implement bad() method with infinite loop
  *
  * */
 
