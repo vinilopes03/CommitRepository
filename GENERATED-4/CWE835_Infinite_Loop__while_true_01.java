@@ -92,3 +92,13 @@ public class CWE835_Infinite_Loop__while_true_01 extends AbstractTestCase {
         mainFromParent(args);
     }
 }
+
+
+/**
+     * Handles the logic for the loop iteration
+     * @param i The current value of the loop counter
+     */
+    private void handleLoop(int i) {
+        IO.writeLine(i);
+        i++;
+    }
