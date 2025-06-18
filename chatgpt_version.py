@@ -104,3 +104,13 @@ def get_daily_links(month_url):
     except Exception as e:
         print(f"Error accessing {month_url}: {e}")
         return []
+
+
+def save_results(rows):
+    file_exists = os.path.exists(OUTPUT_FILE)
+    with open(OUTPUT_FILE, "a", newline="") as csvfile:
+        writer = csv.DictWriter(csvfile, fieldnames=["url", "cve", "introducing_commit", "fix_commit", "repository"])
+        if not file_exists:
+            writer.writeheader()
+        for row in rows:
+            writer.writerow(row)
