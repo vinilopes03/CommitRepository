@@ -28,6 +28,12 @@ public class CWE835_Infinite_Loop__do_01 extends AbstractTestCase
 
         do 
         {
+            /* FIX: Add a break point for the loop if i = 10 */
+            if (i == 10) 
+            { 
+                break; 
+            }
+            
             IO.writeLine(i);
             i = (i + 1) % 256;
         } while(i >= 0);
