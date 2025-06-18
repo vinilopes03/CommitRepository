@@ -14,4 +14,6 @@ private boolean shouldBreak(int count) {
     return count == 10;
 }
 
+while(!shouldBreak(i)) {
+
 }
