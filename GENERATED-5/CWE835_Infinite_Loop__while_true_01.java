@@ -10,3 +10,21 @@ import testcasesupport.*;
 public class CWE835_Infinite_Loop__while_true_01 extends AbstractTestCase 
 {
 
+public void bad()
+{
+    int i = 0;
+
+    /* FLAW: Infinite Loop - while(true) with no break point */
+    while(true)
+    {
+        if (i == 10)
+        {
+            break;
+        }
+        
+        IO.writeLine(i);
+        i++;
+    }
+}
+
+}
