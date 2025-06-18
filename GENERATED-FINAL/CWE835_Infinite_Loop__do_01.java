@@ -18,4 +18,16 @@ public class CWE835_Infinite_Loop__do_01 extends AbstractTestCase
 {
 }
 
+public void bad()
+    {
+        int i = 0;
+    
+        /* FLAW: Infinite Loop - do{} with no break point */
+        do 
+        {
+            IO.writeLine(i);
+            i = (i + 1) % 256;
+        } while(i >= 0);
+    }
+
 }
