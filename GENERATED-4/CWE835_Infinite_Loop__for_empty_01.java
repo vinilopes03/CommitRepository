@@ -1,4 +1,4 @@
-if (i == 10) 
-{ 
-    break; 
+public void bad()
+{
+    good1();
 }
