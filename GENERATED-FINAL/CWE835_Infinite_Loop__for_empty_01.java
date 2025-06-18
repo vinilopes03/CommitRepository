@@ -27,4 +27,10 @@ public void bad()
     }
 }
 
+public static void main(String[] args) 
+        throws ClassNotFoundException, InstantiationException, IllegalAccessException 
+{
+    new CWE835_Infinite_Loop__for_empty_01().bad();
+}
+
 }
