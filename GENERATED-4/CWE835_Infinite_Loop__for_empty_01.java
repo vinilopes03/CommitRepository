@@ -1,5 +1,5 @@
 /*
- * @description Refactor bad() method to separate infinite loop logic
+ * @description Implement break condition in infiniteLoop() method
  *
  * */
 
@@ -17,6 +17,9 @@ public class CWE835_Infinite_Loop__for_empty_01 extends AbstractTestCase {
 
         /* FLAW: Infinite Loop - for() with no break point */
         for (;;) {
+            if (i == 10) {
+                break;
+            }
             IO.writeLine(i);
             i++;
         }
