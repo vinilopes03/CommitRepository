@@ -60,3 +60,23 @@ private void good1()
             i = (i + 1) % 256;
         }
     }
+
+
+private void good1() 
+    {
+        int i = 0;
+
+        while (i >= 0)
+        {
+            fixedLoop(i);
+        }
+    }
+
+    private void fixedLoop(int i) {
+        if (i == 10) { 
+            break; 
+        }
+
+        IO.writeLine(i);
+        i = (i + 1) % 256;
+    }
