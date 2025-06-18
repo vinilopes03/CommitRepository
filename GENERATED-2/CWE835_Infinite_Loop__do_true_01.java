@@ -88,3 +88,10 @@ private void good1()
         i++;
     } while(true);
 }
+
+
+public static void main(String[] args) 
+            throws ClassNotFoundException, InstantiationException, IllegalAccessException 
+    {
+        mainFromParent(args);
+    }
