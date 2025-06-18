@@ -1,3 +1,3 @@
-private static void runTestCWE1() {
-    (new testcases.CWE1()).runTest("CWE1");
+private static void runTestCWE2() {
+    (new testcases.CWE2()).runTest("CWE2");
 }
