@@ -39,4 +39,9 @@ private void good1()
     } while(true);
 }
 
+public void good()  
+{
+    good1();
+}
+
 }
