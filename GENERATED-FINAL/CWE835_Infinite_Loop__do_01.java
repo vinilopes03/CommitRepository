@@ -15,4 +15,8 @@ if (i == 10)
                 break; 
             }
 
+private boolean shouldBreak(int i) {
+        return i == 10;
+    }
+
 }
