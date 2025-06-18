@@ -80,3 +80,9 @@ private void good1()
         IO.writeLine(i);
         i = (i + 1) % 256;
     }
+
+
+public void good()  
+    {
+        good1();
+    }
