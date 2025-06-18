@@ -22,4 +22,9 @@ for (;;)
     i++;
 }
 
+public static void main(String[] args) 
+{
+    mainFromParent(args);
+}
+
 }
