@@ -41,4 +41,10 @@ private void good2()
         }
     }
 
+public void good()  
+    {
+        good1();
+        good2();
+    }
+
 }
