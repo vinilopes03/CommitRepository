@@ -61,3 +61,9 @@ public class CWE835_Infinite_Loop__do_true_01 extends AbstractTestCase
             { 
                 break; 
             }
+
+
+public void bad()
+    {
+        good1();
+    }
