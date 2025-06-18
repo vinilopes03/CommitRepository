@@ -32,3 +32,27 @@ def get_daily_links(month_url):
     except Exception as e:
         print(f"Error accessing {month_url}: {e}")
         return []
+
+
+def main():
+    print(f"📁 Writing to: {os.path.abspath(OUTPUT_FILE)}")
+    months = month_range(START_YEAR_MONTH, END_YEAR_MONTH)
+
+    for month in months:
+        print(f"\n📅 Month: {month}")
+        month_url = f"{BASE_URL}/{month}/"
+        links = get_daily_links(month_url)
+        print(f"🔗 Found {len(links)} CVE links.")
+
+        for url in links:
+            rows = parse_cve_page(url)
+            if rows:
+                save_results(rows)
+            else:
+                print(f"⚠️  Skipping save: No data extracted from {url}")
+            time.sleep(0.5)  # politeness delay
+
+    print("✅ Done.")
+
+if __name__ == "__main__":
+    main()
