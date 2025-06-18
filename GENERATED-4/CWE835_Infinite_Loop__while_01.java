@@ -1,5 +1,5 @@
 /*
- * @description Implement bad() method with infinite loop
+ * @description Implement good1() method with fixed loop
  *
  * */
 
