@@ -15,4 +15,20 @@ if (i == 10)
                 break; 
             }
 
+private void good1() 
+    {
+        int i = 0;
+
+        do 
+        {
+            if (i == 10) 
+            { 
+                break; 
+            }
+            
+            IO.writeLine(i);
+            i++;
+        } while(true);
+    }
+
 }
