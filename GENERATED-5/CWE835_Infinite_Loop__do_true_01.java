@@ -27,4 +27,9 @@ public void bad()
     } while (true);
 }
 
+public void good()
+{
+    good1();
+}
+
 }
