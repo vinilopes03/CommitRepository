@@ -27,4 +27,9 @@ private void good1()
     }
 }
 
+public void bad()
+{
+    good1();
+}
+
 }
