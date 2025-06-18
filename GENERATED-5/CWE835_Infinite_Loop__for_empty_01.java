@@ -16,4 +16,16 @@ private void breakInfiniteLoop(int i) {
     }
 }
 
+public void bad() {
+    int i = 0;
+    
+    /* FLAW: Infinite Loop - for() with no break point */
+    for (;;) {
+        breakInfiniteLoop(i);
+        
+        IO.writeLine(i);
+        i++;
+    }
+}
+
 }
