@@ -37,4 +37,9 @@ private void good1()
     }
 }
 
+public void good()  
+{
+    good1();
+}
+
 }
