@@ -23,4 +23,21 @@ while (i >= 0)
     i = (i + 1) % 256;
 }
 
+/* FIX: Refactor to use a method for break condition */
+private boolean shouldBreak(int value) {
+    return value == 10;
+}
+
+int i = 0;
+while (i >= 0)
+{
+    if (shouldBreak(i))
+    {
+        break;
+    }
+
+    IO.writeLine(i);
+    i = (i + 1) % 256;
+}
+
 }
