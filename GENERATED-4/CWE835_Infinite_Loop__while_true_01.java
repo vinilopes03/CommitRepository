@@ -1,5 +1,5 @@
 /*
- * @description Initial structure with bad() and good1() methods
+ * @description Refactor good1() method to improve readability
  *
  * */
 
@@ -26,14 +26,8 @@ public class CWE835_Infinite_Loop__while_true_01 extends AbstractTestCase
     {
         int i = 0;
 
-        while(true)
+        while(i < 10)
         {
-            /* FIX: Add a break point for the loop if i = 10 */
-            if (i == 10) 
-            { 
-                break; 
-            }
-            
             IO.writeLine(i);
             i++;
         }
