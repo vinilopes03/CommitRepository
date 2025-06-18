@@ -72,3 +72,9 @@ private void good1()
         i = (i + 1) % 256;
     } while(i >= 0);
 }
+
+
+public void good()  
+{
+    good1();
+}
