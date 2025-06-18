@@ -93,3 +93,10 @@ private void good2()
         IO.writeLine(i);
     }
 }
+
+
+public static void main(String[] args) 
+        throws ClassNotFoundException, InstantiationException, IllegalAccessException 
+{
+    mainFromParent(args);
+}
