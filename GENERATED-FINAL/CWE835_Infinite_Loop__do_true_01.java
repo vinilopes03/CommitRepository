@@ -10,11 +10,3 @@ import testcasesupport.*;
 public class CWE835_Infinite_Loop__do_true_01 extends AbstractTestCase 
 {
 
-if (i == 10) 
-{ 
-    break; 
-}
-
-/* FIX: Add a break point for the loop if i = 10 */
-
-}
