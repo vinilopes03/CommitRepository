@@ -21,4 +21,20 @@ public void bad()
     }
 }
 
+private void good1() 
+{
+    int i = 0;
+
+    while(true)
+    {
+        if (i == 10) 
+        { 
+            break; 
+        }
+        
+        IO.writeLine(i);
+        i++;
+    }
+}
+
 }
