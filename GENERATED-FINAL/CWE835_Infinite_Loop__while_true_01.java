@@ -14,4 +14,15 @@ private boolean shouldBreak(int i) {
     return i == 10;
 }
 
+while(true)
+{
+    if (shouldBreak(i)) 
+    { 
+        break; 
+    }
+    
+    IO.writeLine(i);
+    i++;
+}
+
 }
