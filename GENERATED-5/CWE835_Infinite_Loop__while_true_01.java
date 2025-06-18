@@ -22,4 +22,14 @@ private void fixInfiniteLoop(int i)
         i++;
     }
 
+public void bad()
+    {
+        int i = 0;
+    
+        while(true)
+        {
+            fixInfiniteLoop(i);
+        }
+    }
+
 }
