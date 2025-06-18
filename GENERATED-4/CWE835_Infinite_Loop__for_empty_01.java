@@ -1,5 +1,5 @@
 /*
- * @description Initialize project structure
+ * @description Refactor bad() method to separate infinite loop logic
  *
  * */
 
@@ -9,6 +9,10 @@ import testcasesupport.AbstractTestCase;
 
 public class CWE835_Infinite_Loop__for_empty_01 extends AbstractTestCase {
     public void bad() {
+        infiniteLoop();
+    }
+
+    private void infiniteLoop() {
         int i = 0;
 
         /* FLAW: Infinite Loop - for() with no break point */
