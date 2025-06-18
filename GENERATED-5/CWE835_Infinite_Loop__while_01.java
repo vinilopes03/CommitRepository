@@ -22,4 +22,21 @@ public void bad()
     }
 }
 
+public void bad()
+{
+    int i = 0;
+
+    /* FLAW: Infinite Loop - while() with no break point */
+    while (i >= 0)
+    {
+        IO.writeLine(i);
+        i = (i + 1) % 256;
+
+        // Break the loop if i reaches 10
+        if (i == 10) {
+            break;
+        }
+    }
+}
+
 }
