@@ -39,4 +39,10 @@ public class CWE835_Infinite_Loop__for_01 extends AbstractTestCase
             IO.writeLine(i);
         }
     }
+    
+    public void good()  
+    {
+        good1();
+        good2();
+    }
 }
