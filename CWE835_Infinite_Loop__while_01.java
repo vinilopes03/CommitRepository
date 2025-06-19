@@ -14,13 +14,18 @@ public class CWE835_Infinite_Loop__while_01 extends AbstractTestCase
         int i = 0;
     
         /* FLAW: Infinite Loop - while() with no break point */
+        infiniteLoop(i);
+    }
+    
+    private void infiniteLoop(int i) 
+    {
         while (i >= 0)
         {
             IO.writeLine(i);
             i = (i + 1) % 256;
         }
     }
-    
+
     private void good1() 
     {
         int i = 0;
