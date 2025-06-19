@@ -1,24 +1,19 @@
-/*
- * @description Infinite loop - while()
- *
- * */
+private void good1() 
+{
+    int i = 0;
 
-package testcases.CWE835_Infinite_Loop;
-
-import testcasesupport.*;
-
-public class CWE835_Infinite_Loop__while_01 extends AbstractTestCase 
-{    
-    public void bad()
+    while (i >= 0)
     {
-        int i = 0;
+        // Noise: Add commented out code
+        // int temp = i;
 
-        // Noise: Add extra whitespace
-        /* FLAW: Infinite Loop - while() with no break point */
-        while (i >= 0)
-        {
-            IO.writeLine(i);
-            i = (i + 1) % 256;
+        // FIX: Add a break point for the loop if i = 10
+        if (i == 10) 
+        { 
+            break; 
         }
+
+        IO.writeLine(i);
+        i = (i + 1) % 256;
     }
 }
