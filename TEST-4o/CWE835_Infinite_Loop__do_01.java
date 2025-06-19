@@ -1,6 +1,6 @@
 /*
  * @description Infinite loop - do{}while()
- * This class demonstrates a simple infinite loop scenario.
+ * This class demonstrates both a flawed and a corrected example of a do-while loop.
  */
 
 package testcases.CWE835_Infinite_Loop;
@@ -22,7 +22,7 @@ public class CWE835_Infinite_Loop__do_01 extends AbstractTestCase
         do 
         {
             IO.writeLine(i); // Output current value of i
-            i = (i + 1) % 256;
+            i = (i + 1) % 256; // Increment i, but loop never breaks
         } while(i >= 0); // This loop will run indefinitely
     }
     
@@ -39,13 +39,13 @@ public class CWE835_Infinite_Loop__do_01 extends AbstractTestCase
             }
             
             IO.writeLine(i); // Output current value of i
-            i = (i + 1) % 256;
+            i = (i + 1) % 256; // Increment i
         } while(i >= 0);
     }
     
     public void good()  
     {
-        good1();
+        good1(); // Invoke the corrected method
     }    
     
     /* Below is the main(). It is only used when building this testcase on 
