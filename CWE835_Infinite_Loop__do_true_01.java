@@ -1,5 +1,5 @@
 /*
- * @description Add good1 method with a fix for infinite loop
+ * @description Add main method for standalone testing
  *
  * */
 
@@ -37,5 +37,16 @@ public class CWE835_Infinite_Loop__do_true_01 extends AbstractTestCase
             IO.writeLine(i);
             i++;
         } while(true);
+    }
+    
+    public void good()  
+    {
+        good1();
+    }
+    
+    public static void main(String[] args) 
+            throws ClassNotFoundException, InstantiationException, IllegalAccessException 
+    {
+        mainFromParent(args);
     }
 }
