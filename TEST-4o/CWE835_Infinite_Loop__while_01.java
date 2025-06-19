@@ -7,6 +7,16 @@ package testcases.CWE835_Infinite_Loop;
 import testcasesupport.*;
 
 public class CWE835_Infinite_Loop__while_01 extends AbstractTestCase 
-{
-    // Initial setup of the class
+{    
+    public void bad()
+    {
+        int i = 0;
+
+        /* FLAW: Infinite Loop - while() with no break point */
+        while (i >= 0)
+        {
+            IO.writeLine(i);
+            i = (i + 1) % 256;
+        }
+    }
 }
