@@ -16,6 +16,27 @@ public class Main {
                 System.err.println("java testcasesupport.Main testcases.CWE690_Unchecked_Return_Value_to_NULL_Pointer_Dereference.custom_function.CWE690_Unchecked_Return_Value_to_NULL_Pointer_Dereference__custom_function_01 testcases.CWE481_Assigning_instead_of_Comparing.bool.CWE481_Assigning_instead_of_Comparing__bool_01");
                 System.exit(1);
             }
+
+            for (String className : args) {
+
+                try {
+
+                    Class<?> myClass = Class.forName(className);
+
+                    AbstractTestCase myObject = (AbstractTestCase) myClass.newInstance();
+
+                    myObject.runTest(className);
+
+                } catch (Exception ex) {
+
+                    IO.writeLine("Could not run test for class " + className);
+                    ex.printStackTrace();
+
+                }
+
+                IO.writeLine(""); // leave a blank line between classes
+
+            }
         }
     }
 }
