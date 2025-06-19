@@ -43,6 +43,7 @@ public class CWE835_Infinite_Loop__for_01 extends AbstractTestCase
     public void good()  
     {
         good1();
+        good2();
     }    
     
     /* Below is the main(). It is only used when building this testcase on 
