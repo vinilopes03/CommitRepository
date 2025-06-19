@@ -1,7 +1,7 @@
 /*
  * @description Infinite loop - do{}while()
- *
- * */
+ * This class demonstrates a simple infinite loop scenario.
+ */
 
 package testcases.CWE835_Infinite_Loop;
 
@@ -21,9 +21,9 @@ public class CWE835_Infinite_Loop__do_01 extends AbstractTestCase
         /* FLAW: Infinite Loop - do{} with no break point */
         do 
         {
-            IO.writeLine(i);
+            IO.writeLine(i); // Output current value of i
             i = (i + 1) % 256;
-        } while(i >= 0);
+        } while(i >= 0); // This loop will run indefinitely
     }
     
     private void good1() 
@@ -35,10 +35,10 @@ public class CWE835_Infinite_Loop__do_01 extends AbstractTestCase
             /* FIX: Add a break point for the loop if i = 10 */
             if (i == 10) 
             { 
-                break; 
+                break; // Exit the loop if i equals 10
             }
             
-            IO.writeLine(i);
+            IO.writeLine(i); // Output current value of i
             i = (i + 1) % 256;
         } while(i >= 0);
     }
