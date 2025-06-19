@@ -54,4 +54,7 @@ public class CWE835_Infinite_Loop__do_true_01 extends AbstractTestCase
     {
         mainFromParent(args);
     }
+    
+    // Adding some comments for noise
+    // This is a noise comment
 }
