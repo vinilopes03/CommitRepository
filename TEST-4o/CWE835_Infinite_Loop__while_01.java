@@ -36,4 +36,9 @@ public class CWE835_Infinite_Loop__while_01 extends AbstractTestCase
             i = (i + 1) % 256;
         }
     }
+    
+    public void good()  
+    {
+        good1();
+    }
 }
