@@ -42,4 +42,10 @@ public class CWE835_Infinite_Loop__for_empty_01 extends AbstractTestCase
     {
         good1();
     }    
+    
+    public static void main(String[] args) 
+            throws ClassNotFoundException, InstantiationException, IllegalAccessException 
+    {
+        mainFromParent(args);
+    }
 }
