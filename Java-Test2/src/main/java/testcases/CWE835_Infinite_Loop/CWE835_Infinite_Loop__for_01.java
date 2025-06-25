@@ -1,6 +1,6 @@
 /*
  * @description Infinite loop - for()
- * Added an implementation for the 'good1' method
+ * Added an implementation for the 'good2' method
  */
 
 package testcases.CWE835_Infinite_Loop;
@@ -27,6 +27,15 @@ public class CWE835_Infinite_Loop__for_01 extends AbstractTestCase
             { 
                 break; 
             }
+            IO.writeLine(i);
+        }
+    }
+    
+    private void good2() 
+    {
+        /* FIX: Add a break point for the loop if i = 10 */
+        for (int i = 0; i < 11; i = (i + 1) % 256)
+        {
             IO.writeLine(i);
         }
     }
