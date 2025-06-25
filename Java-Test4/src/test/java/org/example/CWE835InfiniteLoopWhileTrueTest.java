@@ -1,9 +1,7 @@
-package testcases.CWE835_Infinite_Loop;
+package org.example;
 
 import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.*;
-
-import testcases.CWE835_Infinite_Loop.CWE835_Infinite_Loop__while_true_01;
 
 import java.util.concurrent.*;
 
