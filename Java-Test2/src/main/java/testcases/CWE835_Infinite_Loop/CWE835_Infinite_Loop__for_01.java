@@ -1,6 +1,6 @@
 /*
  * @description Infinite loop - for()
- * Initial commit to define the class structure
+ * Added implementation for the 'bad' method
  */
 
 package testcases.CWE835_Infinite_Loop;
@@ -9,5 +9,12 @@ import testcasesupport.*;
 
 public class CWE835_Infinite_Loop__for_01 extends AbstractTestCase 
 {
-    // Empty implementation as a starting point
+    public void bad()
+    {
+        /* FLAW: Infinite Loop - for() with no break point */
+        for (int i = 0; i >= 0; i = (i + 1) % 256)
+        {
+            IO.writeLine(i);
+        }
+    }
 }
