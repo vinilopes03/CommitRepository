@@ -16,9 +16,9 @@ public class CWE835_Infinite_Loop__do_true_01 extends AbstractTestCase
         /* FLAW: Infinite Loop - do{}while(true) with no break point */
         do 
         {
-            IO.writeLine(i);
+            IO.writeLine(i); // Print the current value of i
             i++;
-        } while(true);
+        } while(true); // Infinite loop
     }
     
     private void good1() 
@@ -33,19 +33,19 @@ public class CWE835_Infinite_Loop__do_true_01 extends AbstractTestCase
                 break; 
             }
 
-            IO.writeLine(i);
+            IO.writeLine(i); // Print the current value of i
             i++;
-        } while(true);
+        } while(true); // Loop with a break condition
     }
     
     public void good()  
     {
-        good1();
+        good1(); // Call the good1 method
     }
 
     public static void main(String[] args) 
             throws ClassNotFoundException, InstantiationException, IllegalAccessException 
     {
-        mainFromParent(args);
+        mainFromParent(args); // Execute the main method from parent
     }
 }
