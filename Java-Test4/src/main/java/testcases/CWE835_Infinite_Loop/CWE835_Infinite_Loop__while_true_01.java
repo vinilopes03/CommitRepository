@@ -38,6 +38,11 @@ public class CWE835_Infinite_Loop__while_true_01 extends AbstractTestCase
         }
     }
     
+    public void good()  
+    {
+        good1();
+    }    
+    
     /* Main method for standalone execution */
     public static void main(String[] args) 
             throws ClassNotFoundException, InstantiationException, IllegalAccessException 
