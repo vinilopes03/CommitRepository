@@ -1,6 +1,6 @@
 /*
  * @description Infinite loop - for()
- * Added an implementation for the 'good2' method
+ * Completed the class by adding the 'good' method and main entry point
  */
 
 package testcases.CWE835_Infinite_Loop;
@@ -38,5 +38,22 @@ public class CWE835_Infinite_Loop__for_01 extends AbstractTestCase
         {
             IO.writeLine(i);
         }
+    }
+    
+    public void good()  
+    {
+        good1();
+        good2();
+    }    
+    
+    /* Below is the main(). It is only used when building this testcase on 
+     * its own for testing or for building a binary to use in testing binary 
+     * analysis tools. It is not used when compiling all the testcases as one 
+     * application, which is how source code analysis tools are tested. 
+	 */ 
+    public static void main(String[] args) 
+            throws ClassNotFoundException, InstantiationException, IllegalAccessException 
+    {
+        mainFromParent(args);
     }
 }
