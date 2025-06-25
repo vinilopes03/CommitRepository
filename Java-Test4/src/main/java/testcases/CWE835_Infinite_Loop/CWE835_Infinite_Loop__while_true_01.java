@@ -9,5 +9,15 @@ import testcasesupport.*;
 
 public class CWE835_Infinite_Loop__while_true_01 extends AbstractTestCase 
 {
-    // Initial setup with package and class definitions
+    public void bad()
+    {
+        int i = 0;
+    
+        /* FLAW: Infinite Loop - while(true) with no break point */
+        while(true)
+        {
+            IO.writeLine(i);
+            i++;
+        }
+    }
 }
