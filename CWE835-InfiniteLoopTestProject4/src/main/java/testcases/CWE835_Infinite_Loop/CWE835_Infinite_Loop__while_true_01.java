@@ -10,7 +10,13 @@ import testcasesupport.*;
 public class CWE835_Infinite_Loop__while_true_01 extends AbstractTestCase 
 {
     public void bad() {
-        // Method stub
+        int i = 0;
+        
+        /* FLAW: Infinite Loop - while(true) with no break point */
+        while(true) {
+            IO.writeLine(i);  // Output the value of i
+            i++;
+        }
     }
     
     private void good1() {
@@ -19,7 +25,7 @@ public class CWE835_Infinite_Loop__while_true_01 extends AbstractTestCase
     
     public void good() {
         // Method stub
-    }    
+    }
     
     public static void main(String[] args)
             throws ClassNotFoundException, InstantiationException, IllegalAccessException {
