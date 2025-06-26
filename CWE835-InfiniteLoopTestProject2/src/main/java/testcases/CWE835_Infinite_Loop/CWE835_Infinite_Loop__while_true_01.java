@@ -22,11 +22,27 @@ public class CWE835_Infinite_Loop__while_true_01 extends AbstractTestCase
     }
     
     private void good1() {
-        // Method signature for good1 implementation
+        int i = 0; // Initialize counter
+
+        while(true) {
+            // FIX: Add a break point for the loop if i = 10
+            if (i == 10) { 
+                break; 
+            }
+            
+            IO.writeLine(i);
+            i++;
+            
+            // Redundant check for demonstration
+            if (i > 10) {
+                // Should never happen
+                break;
+            }
+        }
     }
     
     public void good() {
-        // Method signature for good implementation
+        good1();
     }
 
     public static void main(String[] args) 
