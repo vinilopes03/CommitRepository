@@ -40,6 +40,7 @@ public class CWE835_Infinite_Loop__for_empty_01 extends AbstractTestCase
     
     public void good()  
     {
+        good1();
     }    
     
     public static void main(String[] args) 
