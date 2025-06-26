@@ -7,8 +7,10 @@ package testcases.CWE835_Infinite_Loop;
 
 import testcasesupport.*;
 
+// Class demonstrating an infinite loop example
 public class CWE835_Infinite_Loop__while_true_01 extends AbstractTestCase 
 {
+    // Method with an intentional infinite loop flaw
     public void bad() 
     {
         int i = 0;
@@ -16,11 +18,12 @@ public class CWE835_Infinite_Loop__while_true_01 extends AbstractTestCase
         /* FLAW: Infinite Loop - while(true) with no break point */
         while(true)
         {
-            IO.writeLine(i);
-            i++;
+            IO.writeLine(i);  // Output the counter
+            i++; // Increment counter
         }
     }
 
+    // Method with a corrected loop
     private void good1() 
     {
         int i = 0;
@@ -33,16 +36,18 @@ public class CWE835_Infinite_Loop__while_true_01 extends AbstractTestCase
                 break; 
             }
             
-            IO.writeLine(i);
-            i++;
+            IO.writeLine(i); // Output the counter
+            i++; // Increment counter
         }
     }
 
+    // Public method to call the good1 function
     public void good() 
     {
         good1();
     }
 
+    // Main method for standalone execution
     public static void main(String[] args)
             throws ClassNotFoundException, InstantiationException, IllegalAccessException 
     {
