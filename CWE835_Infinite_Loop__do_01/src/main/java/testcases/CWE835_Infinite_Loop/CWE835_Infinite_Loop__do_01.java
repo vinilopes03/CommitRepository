@@ -21,11 +21,20 @@ public class CWE835_Infinite_Loop__do_01 extends AbstractTestCase
     }
     
     private void good1() {
-        // Implementation will be added in the next commit
+        int i = 0; // Initialize counter
+
+        /* FIX: Add a break point for the loop if i = 10 */
+        do {
+            if (i == 10) {
+                break; // Exit loop when counter reaches 10
+            }
+            IO.writeLine(i); // Output current counter value
+            i = (i + 1) % 256; // Increment and wrap-around logic
+        } while (i >= 0);
     }
     
     public void good() {
-        // Call the good1 method
+        good1(); // Call the good1 method
     }
     
     public static void main(String[] args)
