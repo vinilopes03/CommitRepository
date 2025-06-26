@@ -33,7 +33,7 @@ public class CWE835_Infinite_Loop__while_true_01 extends AbstractTestCase
     }
     
     public void good() {
-        // Method stub for good
+        good1();
     }    
     
     public static void main(String[] args) 
