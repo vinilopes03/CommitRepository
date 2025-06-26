@@ -41,12 +41,14 @@ public class CWE835_Infinite_Loop__while_true_01 extends AbstractTestCase
     
     public void good()  
     {
-        // Method signature for good
+        // Call good1 to demonstrate its usefulness
+        good1();
     }    
     
     public static void main(String[] args) 
         throws ClassNotFoundException, InstantiationException, IllegalAccessException 
     {
-        // Method signature for main
+        // This method is only used for standalone testing
+        mainFromParent(args);
     }
 }
