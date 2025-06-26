@@ -8,7 +8,7 @@ public class CWE835_Infinite_Loop__while_true_01Test {
 
     @Test
     public void testBadMethodForInfiniteLoop() {
-        CWE835_Infinite_Loop__while_true_01 instance = new CWE835_Infinite_Loop__while_true_01();
+        CWE835_Infinite_Loop__while_true_01 instance = new testcases.CWE835_Infinite_Loop.CWE835_Infinite_Loop__while_true_01();
         ExecutorService executor = Executors.newSingleThreadExecutor();
         
         Future<?> future = executor.submit(() -> {
