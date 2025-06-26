@@ -17,7 +17,7 @@ public class CWE835_Infinite_Loop__while_true_01 extends AbstractTestCase
         while(true)
         {
             IO.writeLine(i);
-            i++;
+            i++; // Increment i indefinitely
         }
     }
     
@@ -34,13 +34,13 @@ public class CWE835_Infinite_Loop__while_true_01 extends AbstractTestCase
             }
             
             IO.writeLine(i);
-            i++;
+            i++; // Increment i until 10
         }
     }
     
     public void good()  
     {
-        good1();
+        good1(); // Call the safe loop implementation
     }    
     
     public static void main(String[] args) 
