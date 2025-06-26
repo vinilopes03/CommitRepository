@@ -1,4 +1,4 @@
-package CWE835_Infinite_Loop;
+package testcases.CWE835_Infinite_Loop;
 
 import org.junit.jupiter.api.Test;
 
