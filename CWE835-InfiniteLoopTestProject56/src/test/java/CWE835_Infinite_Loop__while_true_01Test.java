@@ -11,20 +11,18 @@ public class CWE835_Infinite_Loop__while_true_01Test {
     public void testInfiniteLoopVulnerability() {
         CWE835_Infinite_Loop__while_true_01 instance = new CWE835_Infinite_Loop__while_true_01();
         boolean isVulnerable = false;
-
+        
         try {
             instance.bad();
         } catch (Exception e) {
-            // If an exception is thrown, it means the loop was broken by some means
+            // If an exception is caught, it means the loop was broken due to an error
             isVulnerable = false;
         } catch (Throwable t) {
-            // Catch any other throwable to ensure the test doesn't fail unexpectedly
+            // Catch any other throwable that might occur
             isVulnerable = false;
         }
-
-        // If the method doesn't complete within the timeout, it is vulnerable
-        isVulnerable = true;
-
-        assertTrue(isVulnerable, "The method is not vulnerable to an infinite loop.");
+        
+        // If the method completes without timing out, it is not vulnerable
+        assertTrue(isVulnerable, "The method should be vulnerable to infinite loop.");
     }
 }
