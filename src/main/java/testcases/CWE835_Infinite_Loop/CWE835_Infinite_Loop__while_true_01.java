@@ -10,35 +10,21 @@ import testcasesupport.*;
 public class CWE835_Infinite_Loop__while_true_01 extends AbstractTestCase 
 {
     public void bad() {
-        int i = 0;
-
-        /* FLAW: Infinite Loop - while(true) with no break point */
-        while (true) {
-            IO.writeLine(i);
-            i++;
-        }
+        // Method stub for bad
     }
-
+    
     private void good1() {
-        int i = 0;
-
-        while (true) {
-            /* FIX: Add a break point for the loop if i = 10 */
-            if (i == 10) {
-                break;
-            }
-
-            IO.writeLine(i);
-            i++;
-        }
+        // Method stub for good1
     }
-
+    
     public void good() {
-        good1();
-    }
-
-    public static void main(String[] args)
-            throws ClassNotFoundException, InstantiationException, IllegalAccessException {
+        // Method stub for good
+    }    
+    
+    public static void main(String[] args) 
+            throws ClassNotFoundException, InstantiationException, IllegalAccessException 
+    {
+        // Main method stub
         mainFromParent(args);
     }
 }
