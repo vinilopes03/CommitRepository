@@ -40,7 +40,7 @@ public class CWE835_Infinite_Loop__while_01 extends AbstractTestCase
     
     public void good()  
     {
-        // Method implementation will be added in future commits
+        good1();
     }    
     
     public static void main(String[] args) 
