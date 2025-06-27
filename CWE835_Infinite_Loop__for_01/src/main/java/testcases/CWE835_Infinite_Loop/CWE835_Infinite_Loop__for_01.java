@@ -31,8 +31,12 @@ public class CWE835_Infinite_Loop__for_01 extends AbstractTestCase
         }
     }
     
-    public void good();
-    
+    public void good()  
+    {
+        good1();
+        good2();
+    }
+
     public void bad();
     
     public static void main(String[] args)
