@@ -11,7 +11,14 @@ public class CWE835_Infinite_Loop__while_01 extends AbstractTestCase
 {    
     public void bad()
     {
-        // Method implementation will be added in future commits
+        int i = 0;
+        
+        /* FLAW: Infinite Loop - while() with no break point */
+        while (i >= 0)
+        {
+            IO.writeLine(i);
+            i = (i + 1) % 256; // Adding a modulo to simulate wrapping behavior
+        }
     }
     
     private void good1() 
