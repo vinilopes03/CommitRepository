@@ -12,11 +12,13 @@ public class CWE835_Infinite_Loop__do_01 extends AbstractTestCase
     public void bad() {
         int i = 0; // Initialize counter
 
-        /* FLAW: Infinite Loop - do{} with no break point */
+        /* FIX: Add a break point for the loop if i = 10 */
         do {
+            if (i == 10) {
+                break; // Exit loop when counter reaches 10
+            }
             IO.writeLine(i); // Output current counter value
             i = (i + 1) % 256; // Increment and wrap-around logic
-            // Note: This loop never ends naturally
         } while (i >= 0);
     }
     
