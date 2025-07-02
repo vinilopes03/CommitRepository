@@ -16,6 +16,9 @@ public class CWE835_Infinite_Loop__for_empty_01 extends AbstractTestCase
         for (;;) {
             IO.writeLine(i);
             i++;
+            if (i == Integer.MAX_VALUE) { 
+                break; 
+            }
         }
     }
 
