@@ -38,6 +38,10 @@ public class CWE835_Infinite_Loop__do_true_01 extends AbstractTestCase
         /* FLAW: Infinite Loop - do{}while(true)with no break point */
         do 
         {
+            if (i == 10) 
+            { 
+                break; 
+            }
             IO.writeLine(i);
             i++;
         } while(true);
