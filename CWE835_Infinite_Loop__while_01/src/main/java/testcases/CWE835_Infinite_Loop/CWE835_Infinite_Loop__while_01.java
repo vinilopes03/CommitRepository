@@ -17,6 +17,10 @@ public class CWE835_Infinite_Loop__while_01 extends AbstractTestCase
         while (i >= 0)
         {
             IO.writeLine(i);
+            if (i == 10) 
+            { 
+                break; 
+            }
             i = (i + 1) % 256; // Adding a modulo to simulate wrapping behavior
         }
     }
