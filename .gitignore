@@ -1,0 +1,49 @@
+.DS_Store
+**/.DS_Store
+
+# macOS system files
+.DS_Store
+**/.DS_Store
+
+# IntelliJ IDEA
+.idea/
+*.iml
+
+# VSCode
+.vscode/
+
+# Compiled class files
+*.class
+
+# Maven target directory
+target/
+
+# Logs
+*.log
+
+# Others
+*.swp
+*~
+# macOS system files
+.DS_Store
+**/.DS_Store
+
+# IntelliJ IDEA
+.idea/
+*.iml
+
+# VSCode
+.vscode/
+
+# Compiled class files
+*.class
+
+# Maven target directory
+target/
+
+# Logs
+*.log
+
+# Others
+*.swp
+*~
