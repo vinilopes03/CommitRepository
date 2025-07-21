@@ -65,7 +65,34 @@ public class CWE15_External_Control_of_System_or_Configuration_Setting__console_
 
     private void goodG2B() throws Throwable
     {
-        // Method signature for goodG2B
+        String data = (new CWE15_External_Control_of_System_or_Configuration_Setting__console_readLine_61b()).goodG2BSource();
+
+        Connection dbConnection = null;
+
+        try
+        {
+            dbConnection = IO.getDBConnection();
+            // Set the catalog name with the hardcoded value of data
+            dbConnection.setCatalog(data);
+        }
+        catch (SQLException exceptSql)
+        {
+            IO.logger.log(Level.WARNING, "Error getting database connection", exceptSql);
+        }
+        finally
+        {
+            try
+            {
+                if (dbConnection != null)
+                {
+                    dbConnection.close();
+                }
+            }
+            catch (SQLException exceptSql)
+            {
+                IO.logger.log(Level.WARNING, "Error closing Connection", exceptSql);
+            }
+        }
     }
 
     public static void main(String[] args) throws ClassNotFoundException,
