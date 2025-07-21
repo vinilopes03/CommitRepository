@@ -4,7 +4,9 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="a785f5f2-c62c-4043-8025-4f872e40646f" name="Changes" comment="" />
+    <list default="true" id="a785f5f2-c62c-4043-8025-4f872e40646f" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/../Java-Test7/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../Java-Test7/.idea/workspace.xml" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
