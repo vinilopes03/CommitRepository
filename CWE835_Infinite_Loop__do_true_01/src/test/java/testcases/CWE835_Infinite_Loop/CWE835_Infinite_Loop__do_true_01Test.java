@@ -2,8 +2,7 @@ package testcases.CWE835_Infinite_Loop;
 
 import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.assertTrue;
-import static org.junit.jupiter.api.Assertions.assertTimeoutPreemptively;
-import java.time.Duration;
+import static org.junit.jupiter.api.Assertions.fail;
 
 public class CWE835_Infinite_Loop__do_true_01Test {
 
@@ -11,17 +10,28 @@ public class CWE835_Infinite_Loop__do_true_01Test {
     public void testInfiniteLoopVulnerability() {
         CWE835_Infinite_Loop__do_true_01 instance = new CWE835_Infinite_Loop__do_true_01();
         
-        // We expect the bad method to run indefinitely, so we use a timeout to detect this.
-        boolean isVulnerable = assertTimeoutPreemptively(Duration.ofSeconds(1), () -> {
-            try {
-                instance.bad();
-            } catch (Exception e) {
-                // Catch any exception that might be thrown
-            }
-            return false; // If we reach here, it means the loop was not infinite
-        });
+        try {
+            // Run the bad method with a timeout to detect infinite loop
+            Thread thread = new Thread(() -> {
+                try {
+                    instance.bad();
+                } catch (Throwable throwable) {
+                    // Catch any throwable to prevent the test from failing due to exceptions
+                }
+            });
 
-        // If the method execution exceeds the timeout, it indicates an infinite loop
-        assertTrue(isVulnerable, "The method is vulnerable to infinite loop.");
+            thread.start();
+            thread.join(1000); // Wait for 1 second
+
+            if (thread.isAlive()) {
+                // If the thread is still alive after 1 second, it indicates an infinite loop
+                thread.interrupt(); // Interrupt the thread to stop the infinite loop
+                assertTrue(true, "The method is vulnerable to an infinite loop.");
+            } else {
+                fail("The method terminated, indicating no infinite loop.");
+            }
+        } catch (InterruptedException e) {
+            fail("Test was interrupted.");
+        }
     }
 }
