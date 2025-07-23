@@ -46,6 +46,6 @@ public class CWE835_Infinite_Loop__do_true_01 extends AbstractTestCase
     public static void main(String[] args) 
             throws ClassNotFoundException, InstantiationException, IllegalAccessException 
     {
-        // Main method implementation will be added later
+        mainFromParent(args);
     }
 }
