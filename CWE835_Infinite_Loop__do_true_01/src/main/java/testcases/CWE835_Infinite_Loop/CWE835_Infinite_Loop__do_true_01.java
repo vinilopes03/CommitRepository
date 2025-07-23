@@ -28,7 +28,7 @@ public class CWE835_Infinite_Loop__do_true_01 extends AbstractTestCase
     
     public void good()  
     {
-        // Method implementation will be added later
+        good1();
     }
     
     public void bad()
