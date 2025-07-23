@@ -11,7 +11,19 @@ public class CWE835_Infinite_Loop__do_true_01 extends AbstractTestCase
 {
     private void good1() 
     {
-        // Method implementation will be added later
+        int i = 0;
+
+        do 
+        {
+            /* FIX: Add a break point for the loop if i = 10 */
+            if (i == 10) 
+            { 
+                break; 
+            }
+            
+            IO.writeLine(i);
+            i++;
+        } while(true);
     }
     
     public void good()  
