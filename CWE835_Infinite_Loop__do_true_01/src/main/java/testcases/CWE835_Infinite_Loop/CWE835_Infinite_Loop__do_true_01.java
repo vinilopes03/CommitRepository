@@ -33,6 +33,14 @@ public class CWE835_Infinite_Loop__do_true_01 extends AbstractTestCase
     
     public void bad()
     {
+        int i = 0; // Initialize counter
+
+        // FLAW: Infinite Loop - do{}while(true) with no break point
+        do 
+        {
+            IO.writeLine(i); // Print current count
+            i++; // Increment counter
+        } while (true);
     }
 
     public static void main(String[] args) 
