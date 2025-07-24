@@ -25,6 +25,7 @@ public class CWE113_HTTP_Response_Splitting__Environment_setHeaderServlet_07 ext
         {
             if (data != null)
             {
+                data = URLEncoder.encode(data, "UTF-8");
                 response.setHeader("Location", "/author.jsp?lang=" + data);
             }
         }
