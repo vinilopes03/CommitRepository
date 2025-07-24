@@ -182,3 +182,32 @@ private void goodB2G1(HttpServletRequest request, HttpServletResponse response) 
         }
     }
 }
+
+// Previous code...
+
+private void goodB2G2(HttpServletRequest request, HttpServletResponse response) throws Throwable
+{
+    String data;
+    if (PRIVATE_STATIC_FINAL_TRUE)
+    {
+        /* get environment variable ADD */
+        /* POTENTIAL FLAW: Read data from an environment variable */
+        data = System.getenv("ADD");
+    }
+    else
+    {
+        /* INCIDENTAL: CWE 561 Dead Code, the code below will never run
+         * but ensure data is inititialized before the Sink to avoid compiler errors */
+        data = null;
+    }
+
+    if (PRIVATE_STATIC_FINAL_TRUE)
+    {
+        if (data != null)
+        {
+            Cookie cookieSink = new Cookie("lang", URLEncoder.encode(data, "UTF-8"));
+            /* FIX: use URLEncoder.encode to hex-encode non-alphanumerics */
+            response.addCookie(cookieSink);
+        }
+    }
+}
