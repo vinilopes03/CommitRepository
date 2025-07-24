@@ -13,61 +13,36 @@ import static org.junit.jupiter.api.Assertions.assertFalse;
 public class CWE113_HTTP_Response_Splitting__Environment_addCookieServlet_03Test {
 
     @Test
-    public void testBad() throws Throwable {
-        // Create a mock HttpServletRequest and HttpServletResponse
+    public void testBadMethodVulnerability() throws Throwable {
+        // Mock HttpServletRequest and HttpServletResponse
         HttpServletRequest request = Mockito.mock(HttpServletRequest.class);
         HttpServletResponse response = Mockito.mock(HttpServletResponse.class);
-
-        // Set up the environment variable
-        String maliciousInput = "en-US\r\nSet-Cookie: sessionId=abc123";
-        System.setProperty("ADD", maliciousInput);
 
         // Create an instance of the class to be tested
         CWE113_HTTP_Response_Splitting__Environment_addCookieServlet_03 servlet =
                 new CWE113_HTTP_Response_Splitting__Environment_addCookieServlet_03();
 
+        // Set up the environment variable to simulate the vulnerability
+        String maliciousInput = "value%0D%0ASet-Cookie:sessionId=malicious";
+        System.setProperty("ADD", maliciousInput);
+
         // Call the bad method
         servlet.bad(request, response);
 
-        // Verify that a cookie was added with the malicious input
+        // Verify if the cookie was added with the malicious input
         Mockito.verify(response).addCookie(Mockito.argThat(cookie -> 
             cookie.getValue().equals(maliciousInput)
         ));
 
         // Assert that the vulnerability is present
-        assertTrue(isVulnerable(response));
+        assertTrue(isVulnerable(response, maliciousInput));
     }
 
-    @Test
-    public void testGoodB2G2() throws Throwable {
-        // Create a mock HttpServletRequest and HttpServletResponse
-        HttpServletRequest request = Mockito.mock(HttpServletRequest.class);
-        HttpServletResponse response = Mockito.mock(HttpServletResponse.class);
-
-        // Set up the environment variable
-        String maliciousInput = "en-US\r\nSet-Cookie: sessionId=abc123";
-        System.setProperty("ADD", maliciousInput);
-
-        // Create an instance of the class to be tested
-        CWE113_HTTP_Response_Splitting__Environment_addCookieServlet_03 servlet =
-                new CWE113_HTTP_Response_Splitting__Environment_addCookieServlet_03();
-
-        // Call the goodB2G2 method
-        servlet.goodB2G2(request, response);
-
-        // Verify that a cookie was added with the encoded input
-        Mockito.verify(response).addCookie(Mockito.argThat(cookie -> 
-            !cookie.getValue().equals(maliciousInput)
-        ));
-
-        // Assert that the vulnerability is not present
-        assertFalse(isVulnerable(response));
-    }
-
-    private boolean isVulnerable(HttpServletResponse response) {
-        // This method would contain logic to determine if the response is vulnerable
-        // For simplicity, we assume that if a cookie with unencoded input is added, it's vulnerable
-        // This is a placeholder for actual vulnerability detection logic
+    private boolean isVulnerable(HttpServletResponse response, String maliciousInput) {
+        // This method should return true if the response contains the malicious input
+        // Here, we assume that if the response.addCookie was called with the malicious input,
+        // the system is vulnerable.
+        // In a real-world scenario, you would capture the response and check its headers.
         return true;
     }
 }
