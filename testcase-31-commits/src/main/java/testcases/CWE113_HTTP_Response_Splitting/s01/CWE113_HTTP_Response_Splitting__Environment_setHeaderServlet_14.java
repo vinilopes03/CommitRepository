@@ -1,9 +1,3 @@
-/* TEMPLATE GENERATED TESTCASE FILE
-Filename: CWE113_HTTP_Response_Splitting__Environment_setHeaderServlet_14.java
-Label Definition File: CWE113_HTTP_Response_Splitting.label.xml
-Template File: sources-sinks-14.tmpl.java
-*/
-
 package testcases.CWE113_HTTP_Response_Splitting.s01;
 import testcasesupport.*;
 
@@ -13,7 +7,23 @@ public class CWE113_HTTP_Response_Splitting__Environment_setHeaderServlet_14 ext
 {
     public void bad(HttpServletRequest request, HttpServletResponse response) throws Throwable
     {
-        // Method signature for bad implementation
+        String data;
+        if (IO.staticFive == 5)
+        {
+            data = System.getenv("ADD");
+        }
+        else
+        {
+            data = null;
+        }
+
+        if (IO.staticFive == 5)
+        {
+            if (data != null)
+            {
+                response.setHeader("Location", "/author.jsp?lang=" + data);
+            }
+        }
     }
 
     private void goodG2B1(HttpServletRequest request, HttpServletResponse response) throws Throwable
