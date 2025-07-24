@@ -10,14 +10,12 @@ public class CWE113_HTTP_Response_Splitting__Environment_addCookieServlet_13 ext
 
     public void bad(HttpServletRequest request, HttpServletResponse response) throws Throwable {
         String data;
-        // Bad source: Read data from an environment variable
         if (IO.STATIC_FINAL_FIVE == 5) {
             data = System.getenv("ADD");
         } else {
             data = null;
         }
 
-        // Bad sink: Add cookie without verification
         if (IO.STATIC_FINAL_FIVE == 5) {
             if (data != null) {
                 Cookie cookieSink = new Cookie("lang", data);
@@ -27,11 +25,36 @@ public class CWE113_HTTP_Response_Splitting__Environment_addCookieServlet_13 ext
     }
 
     private void goodG2B1(HttpServletRequest request, HttpServletResponse response) throws Throwable {
-        // Method to be implemented
+        String data;
+        if (IO.STATIC_FINAL_FIVE != 5) {
+            data = null;
+        } else {
+            // Good source: Use a hardcoded string
+            data = "foo";
+        }
+
+        if (IO.STATIC_FINAL_FIVE == 5) {
+            if (data != null) {
+                Cookie cookieSink = new Cookie("lang", data);
+                response.addCookie(cookieSink);
+            }
+        }
     }
 
     private void goodG2B2(HttpServletRequest request, HttpServletResponse response) throws Throwable {
-        // Method to be implemented
+        String data;
+        if (IO.STATIC_FINAL_FIVE == 5) {
+            data = "foo";
+        } else {
+            data = null;
+        }
+
+        if (IO.STATIC_FINAL_FIVE == 5) {
+            if (data != null) {
+                Cookie cookieSink = new Cookie("lang", data);
+                response.addCookie(cookieSink);
+            }
+        }
     }
 
     private void goodB2G1(HttpServletRequest request, HttpServletResponse response) throws Throwable {
