@@ -92,3 +92,31 @@ public void bad(HttpServletRequest request, HttpServletResponse response) throws
         }
     }
 }
+
+// Previous code...
+
+private void goodG2B1(HttpServletRequest request, HttpServletResponse response) throws Throwable
+{
+    String data;
+    if (PRIVATE_STATIC_FINAL_FALSE)
+    {
+        /* INCIDENTAL: CWE 561 Dead Code, the code below will never run
+         * but ensure data is inititialized before the Sink to avoid compiler errors */
+        data = null;
+    }
+    else
+    {
+        /* FIX: Use a hardcoded string */
+        data = "foo";
+    }
+
+    if (PRIVATE_STATIC_FINAL_TRUE)
+    {
+        if (data != null)
+        {
+            Cookie cookieSink = new Cookie("lang", data);
+            /* POTENTIAL FLAW: Input not verified before inclusion in the cookie */
+            response.addCookie(cookieSink);
+        }
+    }
+}
