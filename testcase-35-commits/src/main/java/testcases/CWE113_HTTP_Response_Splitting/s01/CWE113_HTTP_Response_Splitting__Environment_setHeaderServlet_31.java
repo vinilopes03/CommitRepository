@@ -31,7 +31,6 @@ public class CWE113_HTTP_Response_Splitting__Environment_setHeaderServlet_31 ext
         String dataCopy;
         {
             String data;
-            // Use a hardcoded string
             data = "foo";
             dataCopy = data;
         }
@@ -44,7 +43,20 @@ public class CWE113_HTTP_Response_Splitting__Environment_setHeaderServlet_31 ext
     }
 
     private void goodB2G(HttpServletRequest request, HttpServletResponse response) throws Throwable {
-        // Method signature for goodB2G
+        String dataCopy;
+        {
+            String data;
+            data = System.getenv("ADD");
+            dataCopy = data;
+        }
+        {
+            String data = dataCopy;
+            if (data != null) {
+                // Use URLEncoder.encode to fix
+                data = URLEncoder.encode(data, "UTF-8");
+                response.setHeader("Location", "/author.jsp?lang=" + data);
+            }
+        }
     }
 
     public static void main(String[] args) throws ClassNotFoundException, InstantiationException, IllegalAccessException {
