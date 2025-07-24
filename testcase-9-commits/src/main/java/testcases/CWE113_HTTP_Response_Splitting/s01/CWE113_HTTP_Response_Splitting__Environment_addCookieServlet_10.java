@@ -1,0 +1,1 @@
+Initialize class structure and method signatures for HTTP Response Splitting test case.
