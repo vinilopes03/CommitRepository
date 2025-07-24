@@ -8,19 +8,20 @@ public class CWE113_HTTP_Response_Splitting__Environment_setHeaderServlet_16 ext
         String data;
 
         while (true) {
-            // Get environment variable ADD
-            // POTENTIAL FLAW: Read data from an environment variable
             data = System.getenv("ADD");
             break;
         }
 
         while (true) {
             if (data != null) {
-                // POTENTIAL FLAW: Input not verified before inclusion in header
                 response.setHeader("Location", "/author.jsp?lang=" + data);
             }
             break;
         }
+    }
+
+    private void goodG2B(HttpServletRequest request, HttpServletResponse response) throws Throwable {
+        // Method signature only
     }
 
     public static void main(String[] args) throws ClassNotFoundException,
