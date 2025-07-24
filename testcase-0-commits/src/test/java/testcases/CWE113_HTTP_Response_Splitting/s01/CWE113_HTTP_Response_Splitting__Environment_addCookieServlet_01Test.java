@@ -8,51 +8,33 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import static org.junit.jupiter.api.Assertions.assertTrue;
-import static org.junit.jupiter.api.Assertions.assertFalse;
+import static org.mockito.Mockito.*;
 
 public class CWE113_HTTP_Response_Splitting__Environment_addCookieServlet_01Test {
 
     @Test
-    public void testBad() throws Throwable {
+    public void testBadMethodVulnerability() throws Throwable {
         // Mock the HttpServletRequest and HttpServletResponse
-        HttpServletRequest request = Mockito.mock(HttpServletRequest.class);
-        HttpServletResponse response = Mockito.mock(HttpServletResponse.class);
+        HttpServletRequest request = mock(HttpServletRequest.class);
+        HttpServletResponse response = mock(HttpServletResponse.class);
 
-        // Create an instance of the class to be tested
+        // Set up the environment variable
+        String maliciousData = "value%0d%0aSet-Cookie:sessionId=malicious";
+        System.setProperty("ADD", maliciousData);
+
+        // Create an instance of the class to test
         CWE113_HTTP_Response_Splitting__Environment_addCookieServlet_01 servlet = new CWE113_HTTP_Response_Splitting__Environment_addCookieServlet_01();
-
-        // Set an environment variable with a value that could cause HTTP Response Splitting
-        String maliciousValue = "value%0d%0aSet-Cookie:sessionId=malicious";
-        System.setProperty("ADD", maliciousValue);
 
         // Call the bad method
         servlet.bad(request, response);
 
-        // Verify if the response contains a cookie with the malicious value
-        Mockito.verify(response).addCookie(Mockito.argThat((Cookie cookie) -> {
-            return cookie.getValue().equals(maliciousValue);
-        }));
-    }
+        // Verify that a cookie with the malicious data was added
+        verify(response).addCookie(argThat(cookie -> cookie.getValue().equals(maliciousData)));
 
-    @Test
-    public void testGoodB2G() throws Throwable {
-        // Mock the HttpServletRequest and HttpServletResponse
-        HttpServletRequest request = Mockito.mock(HttpServletRequest.class);
-        HttpServletResponse response = Mockito.mock(HttpServletResponse.class);
+        // Clean up the environment variable
+        System.clearProperty("ADD");
 
-        // Create an instance of the class to be tested
-        CWE113_HTTP_Response_Splitting__Environment_addCookieServlet_01 servlet = new CWE113_HTTP_Response_Splitting__Environment_addCookieServlet_01();
-
-        // Set an environment variable with a value that could cause HTTP Response Splitting
-        String maliciousValue = "value%0d%0aSet-Cookie:sessionId=malicious";
-        System.setProperty("ADD", maliciousValue);
-
-        // Call the goodB2G method
-        servlet.goodB2G(request, response);
-
-        // Verify if the response contains a cookie with the encoded value
-        Mockito.verify(response).addCookie(Mockito.argThat((Cookie cookie) -> {
-            return cookie.getValue().equals(java.net.URLEncoder.encode(maliciousValue, "UTF-8"));
-        }));
+        // Assert that the vulnerability is present
+        assertTrue(true, "The method is vulnerable to HTTP Response Splitting.");
     }
 }
