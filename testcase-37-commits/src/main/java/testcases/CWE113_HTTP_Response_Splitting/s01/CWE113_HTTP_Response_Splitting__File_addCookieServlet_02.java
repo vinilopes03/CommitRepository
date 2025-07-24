@@ -17,7 +17,7 @@ public class CWE113_HTTP_Response_Splitting__File_addCookieServlet_02 extends Ab
 
     // Other methods...
 
-    private void goodB2G1(HttpServletRequest request, HttpServletResponse response) throws Throwable {
+    private void goodB2G2(HttpServletRequest request, HttpServletResponse response) throws Throwable {
         String data;
         data = ""; // Initialize data
         File file = new File("C:\\data.txt");
@@ -49,7 +49,12 @@ public class CWE113_HTTP_Response_Splitting__File_addCookieServlet_02 extends Ab
         }
     }
 
-    // Other methods...
+    public void good(HttpServletRequest request, HttpServletResponse response) throws Throwable {
+        goodG2B1(request, response);
+        goodG2B2(request, response);
+        goodB2G1(request, response);
+        goodB2G2(request, response);
+    }
 
     public static void main(String[] args) throws ClassNotFoundException,
             InstantiationException, IllegalAccessException {
