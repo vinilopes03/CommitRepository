@@ -38,7 +38,13 @@ public class CWE113_HTTP_Response_Splitting__Environment_addCookieServlet_01 ext
     /* goodB2G() - use bad source and good sink */
     private void goodB2G(HttpServletRequest request, HttpServletResponse response) throws Throwable
     {
-        // Method stub for goodB2G
+        String data = System.getenv("ADD");
+
+        if (data != null)
+        {
+            Cookie cookieSink = new Cookie("lang", URLEncoder.encode(data, "UTF-8"));
+            response.addCookie(cookieSink);
+        }
     }
 
     public static void main(String[] args) throws ClassNotFoundException,
