@@ -57,3 +57,31 @@ public class CWE113_HTTP_Response_Splitting__Environment_addCookieServlet_03 ext
     }
 
     // ... (other methods remain as stubs)
+
+// ... (previous code remains unchanged)
+
+    private void goodG2B2(HttpServletRequest request, HttpServletResponse response) throws Throwable
+    {
+        String data;
+        if (5==5)
+        {
+            /* FIX: Use a hardcoded string */
+            data = "foo";
+        }
+        else
+        {
+            data = null;
+        }
+
+        if (5==5)
+        {
+            if (data != null)
+            {
+                Cookie cookieSink = new Cookie("lang", data);
+                /* POTENTIAL FLAW: Input not verified before inclusion in the cookie */
+                response.addCookie(cookieSink);
+            }
+        }
+    }
+
+    // ... (other methods remain as stubs)
