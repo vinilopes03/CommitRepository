@@ -30,11 +30,35 @@ public class CWE113_HTTP_Response_Splitting__Environment_addCookieServlet_08 ext
     }
 
     private void goodG2B1(HttpServletRequest request, HttpServletResponse response) throws Throwable {
-        // Method signature for goodG2B1
+        String data;
+        if (privateReturnsFalse()) {
+            data = null;
+        } else {
+            data = "foo";
+        }
+
+        if (privateReturnsTrue()) {
+            if (data != null) {
+                Cookie cookieSink = new Cookie("lang", data);
+                response.addCookie(cookieSink);
+            }
+        }
     }
 
     private void goodG2B2(HttpServletRequest request, HttpServletResponse response) throws Throwable {
-        // Method signature for goodG2B2
+        String data;
+        if (privateReturnsTrue()) {
+            data = "foo";
+        } else {
+            data = null;
+        }
+
+        if (privateReturnsTrue()) {
+            if (data != null) {
+                Cookie cookieSink = new Cookie("lang", data);
+                response.addCookie(cookieSink);
+            }
+        }
     }
 
     private void goodB2G1(HttpServletRequest request, HttpServletResponse response) throws Throwable {
