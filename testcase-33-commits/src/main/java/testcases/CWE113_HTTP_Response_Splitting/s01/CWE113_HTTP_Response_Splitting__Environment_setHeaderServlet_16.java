@@ -3,6 +3,8 @@ import testcasesupport.*;
 
 import javax.servlet.http.*;
 
+import java.net.URLEncoder;
+
 public class CWE113_HTTP_Response_Splitting__Environment_setHeaderServlet_16 extends AbstractTestCaseServlet {
     public void bad(HttpServletRequest request, HttpServletResponse response) throws Throwable {
         String data;
@@ -24,13 +26,30 @@ public class CWE113_HTTP_Response_Splitting__Environment_setHeaderServlet_16 ext
         String data;
 
         while (true) {
-            // FIX: Use a hardcoded string
             data = "foo";
             break;
         }
 
         while (true) {
             if (data != null) {
+                response.setHeader("Location", "/author.jsp?lang=" + data);
+            }
+            break;
+        }
+    }
+
+    private void goodB2G(HttpServletRequest request, HttpServletResponse response) throws Throwable {
+        String data;
+
+        while (true) {
+            data = System.getenv("ADD");
+            break;
+        }
+
+        while (true) {
+            if (data != null) {
+                // FIX: use URLEncoder.encode to hex-encode non-alphanumerics
+                data = URLEncoder.encode(data, "UTF-8");
                 response.setHeader("Location", "/author.jsp?lang=" + data);
             }
             break;
