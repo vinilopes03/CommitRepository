@@ -7,33 +7,28 @@ public class CWE113_HTTP_Response_Splitting__Environment_setHeaderServlet_09 ext
 {
     public void bad(HttpServletRequest request, HttpServletResponse response) throws Throwable
     {
-        // Method stub for bad implementation
+        String data;
+        if (IO.STATIC_FINAL_TRUE)
+        {
+            // Potential flaw: Read data from an environment variable
+            data = System.getenv("ADD");
+        }
+        else
+        {
+            data = null; // Dead code, will never run
+        }
+
+        if (IO.STATIC_FINAL_TRUE)
+        {
+            if (data != null)
+            {
+                // Potential flaw: Input not verified before inclusion in header
+                response.setHeader("Location", "/author.jsp?lang=" + data);
+            }
+        }
     }
 
-    private void goodG2B1(HttpServletRequest request, HttpServletResponse response) throws Throwable
-    {
-        // Method stub for goodG2B1 implementation
-    }
-
-    private void goodG2B2(HttpServletRequest request, HttpServletResponse response) throws Throwable
-    {
-        // Method stub for goodG2B2 implementation
-    }
-
-    private void goodB2G1(HttpServletRequest request, HttpServletResponse response) throws Throwable
-    {
-        // Method stub for goodB2G1 implementation
-    }
-
-    private void goodB2G2(HttpServletRequest request, HttpServletResponse response) throws Throwable
-    {
-        // Method stub for goodB2G2 implementation
-    }
-
-    public void good(HttpServletRequest request, HttpServletResponse response) throws Throwable
-    {
-        // Method stub for good implementation
-    }
+    // Other method stubs remain unchanged
 
     public static void main(String[] args) throws ClassNotFoundException,
            InstantiationException, IllegalAccessException
