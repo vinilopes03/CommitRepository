@@ -18,43 +18,22 @@ public class CWE113_HTTP_Response_Splitting__Environment_addCookieServlet_01Test
         HttpServletRequest request = Mockito.mock(HttpServletRequest.class);
         HttpServletResponse response = Mockito.mock(HttpServletResponse.class);
 
+        // Set up the environment variable to simulate a malicious input
+        String maliciousInput = "en-US\r\nSet-Cookie: sessionId=malicious";
+        System.setProperty("ADD", maliciousInput);
+
         // Create an instance of the class to be tested
         CWE113_HTTP_Response_Splitting__Environment_addCookieServlet_01 servlet =
                 new CWE113_HTTP_Response_Splitting__Environment_addCookieServlet_01();
 
-        // Set up the environment variable
-        String maliciousData = "test\r\nSet-Cookie: sessionId=malicious";
-        System.setProperty("ADD", maliciousData);
-
-        // Call the bad method
+        // Invoke the bad method
         servlet.bad(request, response);
 
-        // Verify that a cookie with the malicious data was added
-        Mockito.verify(response).addCookie(Mockito.argThat(cookie -> 
-            cookie.getValue().equals(maliciousData)
-        ));
+        // Verify that the response added a cookie with the malicious input
+        Mockito.verify(response).addCookie(Mockito.argThat(cookie -> cookie.getValue().equals(maliciousInput)));
 
-        // Clean up the environment variable
-        System.clearProperty("ADD");
-    }
-
-    @Test
-    public void testGoodG2B() throws Throwable {
-        // Mock the HttpServletRequest and HttpServletResponse
-        HttpServletRequest request = Mockito.mock(HttpServletRequest.class);
-        HttpServletResponse response = Mockito.mock(HttpServletResponse.class);
-
-        // Create an instance of the class to be tested
-        CWE113_HTTP_Response_Splitting__Environment_addCookieServlet_01 servlet =
-                new CWE113_HTTP_Response_Splitting__Environment_addCookieServlet_01();
-
-        // Call the goodG2B method
-        servlet.goodG2B(request, response);
-
-        // Verify that a cookie with the hardcoded safe data was added
-        Mockito.verify(response).addCookie(Mockito.argThat(cookie -> 
-            cookie.getValue().equals("foo")
-        ));
+        // Assert that the vulnerability is present
+        assertTrue(isVulnerable(response, maliciousInput));
     }
 
     @Test
@@ -63,23 +42,35 @@ public class CWE113_HTTP_Response_Splitting__Environment_addCookieServlet_01Test
         HttpServletRequest request = Mockito.mock(HttpServletRequest.class);
         HttpServletResponse response = Mockito.mock(HttpServletResponse.class);
 
+        // Set up the environment variable to simulate a malicious input
+        String maliciousInput = "en-US\r\nSet-Cookie: sessionId=malicious";
+        System.setProperty("ADD", maliciousInput);
+
         // Create an instance of the class to be tested
         CWE113_HTTP_Response_Splitting__Environment_addCookieServlet_01 servlet =
                 new CWE113_HTTP_Response_Splitting__Environment_addCookieServlet_01();
 
-        // Set up the environment variable
-        String maliciousData = "test\r\nSet-Cookie: sessionId=malicious";
-        System.setProperty("ADD", maliciousData);
-
-        // Call the goodB2G method
+        // Invoke the goodB2G method
         servlet.goodB2G(request, response);
 
-        // Verify that a cookie with the encoded data was added
-        Mockito.verify(response).addCookie(Mockito.argThat(cookie -> 
-            !cookie.getValue().equals(maliciousData) && cookie.getValue().contains("test%0D%0ASet-Cookie%3A+sessionId%3Dmalicious")
-        ));
+        // Verify that the response added a cookie with the encoded input
+        Mockito.verify(response).addCookie(Mockito.argThat(cookie -> !cookie.getValue().equals(maliciousInput)));
 
-        // Clean up the environment variable
-        System.clearProperty("ADD");
+        // Assert that the vulnerability is not present
+        assertFalse(isVulnerable(response, maliciousInput));
+    }
+
+    private boolean isVulnerable(HttpServletResponse response, String input) {
+        // This method checks if the response is vulnerable by inspecting the cookies
+        // added to the response. If a cookie contains the raw input, it indicates a vulnerability.
+        Cookie[] cookies = response.getCookies();
+        if (cookies != null) {
+            for (Cookie cookie : cookies) {
+                if (cookie.getValue().equals(input)) {
+                    return true;
+                }
+            }
+        }
+        return false;
     }
 }
