@@ -60,7 +60,34 @@ public class CWE113_HTTP_Response_Splitting__Environment_setHeaderServlet_12 ext
 
     private void goodG2B(HttpServletRequest request, HttpServletResponse response) throws Throwable
     {
-        // Method to be implemented
+        String data;
+        if(IO.staticReturnsTrueOrFalse())
+        {
+            /* FIX: Use a hardcoded string */
+            data = "foo";
+        }
+        else
+        {
+            /* FIX: Use a hardcoded string */
+            data = "foo";
+        }
+
+        if(IO.staticReturnsTrueOrFalse())
+        {
+            if (data != null)
+            {
+                /* POTENTIAL FLAW: Input not verified before inclusion in header */
+                response.setHeader("Location", "/author.jsp?lang=" + data);
+            }
+        }
+        else
+        {
+            if (data != null)
+            {
+                /* POTENTIAL FLAW: Input not verified before inclusion in header */
+                response.setHeader("Location", "/author.jsp?lang=" + data);
+            }
+        }
     }
 
     private void goodB2G(HttpServletRequest request, HttpServletResponse response) throws Throwable
