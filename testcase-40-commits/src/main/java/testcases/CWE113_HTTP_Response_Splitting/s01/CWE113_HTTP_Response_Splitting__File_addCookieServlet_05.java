@@ -56,7 +56,49 @@ public class CWE113_HTTP_Response_Splitting__File_addCookieServlet_05 extends Ab
         }
     }
 
-    // Method signatures for good variants remain unchanged
+    private void goodG2B1(HttpServletRequest request, HttpServletResponse response) throws Throwable
+    {
+        String data;
+        if (privateFalse)
+        {
+            data = null; // Dead Code
+        }
+        else
+        {
+            data = "foo"; // FIX: Hardcoded string
+        }
+        if (privateTrue)
+        {
+            if (data != null)
+            {
+                Cookie cookieSink = new Cookie("lang", data);
+                response.addCookie(cookieSink); // POTENTIAL FLAW
+            }
+        }
+    }
+
+    private void goodG2B2(HttpServletRequest request, HttpServletResponse response) throws Throwable
+    {
+        String data;
+        if (privateTrue)
+        {
+            data = "foo"; // FIX: Hardcoded string
+        }
+        else
+        {
+            data = null; // Dead Code
+        }
+        if (privateTrue)
+        {
+            if (data != null)
+            {
+                Cookie cookieSink = new Cookie("lang", data);
+                response.addCookie(cookieSink); // POTENTIAL FLAW
+            }
+        }
+    }
+
+    // Method signatures for goodB2G1 and goodB2G2 remain unchanged
 
     public static void main(String[] args) throws ClassNotFoundException,
            InstantiationException, IllegalAccessException
