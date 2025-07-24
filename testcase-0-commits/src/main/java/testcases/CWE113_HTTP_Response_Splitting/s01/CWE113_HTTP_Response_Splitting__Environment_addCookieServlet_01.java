@@ -26,7 +26,18 @@ public class CWE113_HTTP_Response_Splitting__Environment_addCookieServlet_01 ext
 {
     public void bad(HttpServletRequest request, HttpServletResponse response) throws Throwable
     {
-        // Method signature established
+        String data;
+
+        /* get environment variable ADD */
+        /* POTENTIAL FLAW: Read data from an environment variable */
+        data = System.getenv("ADD");
+
+        if (data != null)
+        {
+            Cookie cookieSink = new Cookie("lang", data);
+            /* POTENTIAL FLAW: Input not verified before inclusion in the cookie */
+            response.addCookie(cookieSink);
+        }
     }
 
     public void good(HttpServletRequest request, HttpServletResponse response) throws Throwable
@@ -37,12 +48,12 @@ public class CWE113_HTTP_Response_Splitting__Environment_addCookieServlet_01 ext
 
     private void goodG2B(HttpServletRequest request, HttpServletResponse response) throws Throwable
     {
-        // Method signature established
+        // Method body to be implemented
     }
 
     private void goodB2G(HttpServletRequest request, HttpServletResponse response) throws Throwable
     {
-        // Method signature established
+        // Method body to be implemented
     }
 
     public static void main(String[] args) throws ClassNotFoundException,
