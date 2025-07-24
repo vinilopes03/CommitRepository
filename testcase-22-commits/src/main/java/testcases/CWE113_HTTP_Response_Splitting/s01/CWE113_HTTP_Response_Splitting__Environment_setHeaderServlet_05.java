@@ -1,13 +1,15 @@
-commit 4d5e6f7g8h
+commit 5e6f7g8h9i
 Author: Developer <developer@example.com>
-Date:   2023-10-13
+Date:   2023-10-14
 
-    Implement goodG2B1 method logic
+    Add goodG2B2 and goodB2G1 methods with logic
 
 package testcases.CWE113_HTTP_Response_Splitting.s01;
 import testcasesupport.*;
 
 import javax.servlet.http.*;
+
+import java.net.URLEncoder;
 
 public class CWE113_HTTP_Response_Splitting__Environment_setHeaderServlet_05 extends AbstractTestCaseServlet
 {
@@ -44,7 +46,6 @@ public class CWE113_HTTP_Response_Splitting__Environment_setHeaderServlet_05 ext
         }
         else
         {
-            /* FIX: Use a hardcoded string */
             data = "foo";
         }
 
@@ -52,6 +53,53 @@ public class CWE113_HTTP_Response_Splitting__Environment_setHeaderServlet_05 ext
         {
             if (data != null)
             {
+                response.setHeader("Location", "/author.jsp?lang=" + data);
+            }
+        }
+    }
+
+    private void goodG2B2(HttpServletRequest request, HttpServletResponse response) throws Throwable
+    {
+        String data;
+        if (privateTrue)
+        {
+            data = "foo";
+        }
+        else
+        {
+            data = null;
+        }
+
+        if (privateTrue)
+        {
+            if (data != null)
+            {
+                response.setHeader("Location", "/author.jsp?lang=" + data);
+            }
+        }
+    }
+
+    private void goodB2G1(HttpServletRequest request, HttpServletResponse response) throws Throwable
+    {
+        String data;
+        if (privateTrue)
+        {
+            data = System.getenv("ADD");
+        }
+        else
+        {
+            data = null;
+        }
+
+        if (privateFalse)
+        {
+            IO.writeLine("Benign, fixed string");
+        }
+        else
+        {
+            if (data != null)
+            {
+                data = URLEncoder.encode(data, "UTF-8");
                 response.setHeader("Location", "/author.jsp?lang=" + data);
             }
         }
