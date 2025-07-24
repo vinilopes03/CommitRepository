@@ -11,8 +11,6 @@ public class CWE113_HTTP_Response_Splitting__Environment_setHeaderServlet_04 ext
     public void bad(HttpServletRequest request, HttpServletResponse response) throws Throwable {
         String data;
         if (PRIVATE_STATIC_FINAL_TRUE) {
-            // get environment variable ADD
-            // POTENTIAL FLAW: Read data from an environment variable
             data = System.getenv("ADD");
         } else {
             data = null;
@@ -20,18 +18,39 @@ public class CWE113_HTTP_Response_Splitting__Environment_setHeaderServlet_04 ext
 
         if (PRIVATE_STATIC_FINAL_TRUE) {
             if (data != null) {
-                // POTENTIAL FLAW: Input not verified before inclusion in header
                 response.setHeader("Location", "/author.jsp?lang=" + data);
             }
         }
     }
 
     private void goodG2B1(HttpServletRequest request, HttpServletResponse response) throws Throwable {
-        // Method signature
+        String data;
+        if (PRIVATE_STATIC_FINAL_FALSE) {
+            data = null;
+        } else {
+            data = "foo";
+        }
+
+        if (PRIVATE_STATIC_FINAL_TRUE) {
+            if (data != null) {
+                response.setHeader("Location", "/author.jsp?lang=" + data);
+            }
+        }
     }
 
     private void goodG2B2(HttpServletRequest request, HttpServletResponse response) throws Throwable {
-        // Method signature
+        String data;
+        if (PRIVATE_STATIC_FINAL_TRUE) {
+            data = "foo";
+        } else {
+            data = null;
+        }
+
+        if (PRIVATE_STATIC_FINAL_TRUE) {
+            if (data != null) {
+                response.setHeader("Location", "/author.jsp?lang=" + data);
+            }
+        }
     }
 
     private void goodB2G1(HttpServletRequest request, HttpServletResponse response) throws Throwable {
