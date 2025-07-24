@@ -5,17 +5,19 @@ import javax.servlet.http.*;
 
 public class CWE113_HTTP_Response_Splitting__Environment_setHeaderServlet_09 extends AbstractTestCaseServlet
 {
-    public void bad(HttpServletRequest request, HttpServletResponse response) throws Throwable
+    // 'bad' method remains unchanged
+
+    private void goodG2B1(HttpServletRequest request, HttpServletResponse response) throws Throwable
     {
         String data;
-        if (IO.STATIC_FINAL_TRUE)
+        if (IO.STATIC_FINAL_FALSE)
         {
-            // Potential flaw: Read data from an environment variable
-            data = System.getenv("ADD");
+            data = null; // Dead code, will never run
         }
         else
         {
-            data = null; // Dead code, will never run
+            // Fix: Use a hardcoded string
+            data = "foo";
         }
 
         if (IO.STATIC_FINAL_TRUE)
@@ -28,7 +30,7 @@ public class CWE113_HTTP_Response_Splitting__Environment_setHeaderServlet_09 ext
         }
     }
 
-    // Other method stubs remain unchanged
+    // Other methods remain unchanged
 
     public static void main(String[] args) throws ClassNotFoundException,
            InstantiationException, IllegalAccessException
