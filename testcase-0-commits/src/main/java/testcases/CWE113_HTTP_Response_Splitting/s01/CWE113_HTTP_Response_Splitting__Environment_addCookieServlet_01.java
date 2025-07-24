@@ -6,7 +6,15 @@ import java.net.URLEncoder;
 public class CWE113_HTTP_Response_Splitting__Environment_addCookieServlet_01 extends AbstractTestCaseServlet {
     
     public void bad(HttpServletRequest request, HttpServletResponse response) throws Throwable {
-        // Method signature for bad implementation
+        String data;
+        
+        // Retrieve environment variable
+        data = System.getenv("ADD");
+
+        if (data != null) {
+            Cookie cookieSink = new Cookie("lang", data);
+            response.addCookie(cookieSink);
+        }
     }
 
     public void good(HttpServletRequest request, HttpServletResponse response) throws Throwable {
