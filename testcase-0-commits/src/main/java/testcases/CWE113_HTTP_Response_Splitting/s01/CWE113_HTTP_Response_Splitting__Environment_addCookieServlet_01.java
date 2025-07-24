@@ -9,7 +9,6 @@ public class CWE113_HTTP_Response_Splitting__Environment_addCookieServlet_01 ext
 {
     public void bad(HttpServletRequest request, HttpServletResponse response) throws Throwable
     {
-        // Method stub for bad
         String data = System.getenv("ADD");
         if (data != null)
         {
@@ -20,7 +19,6 @@ public class CWE113_HTTP_Response_Splitting__Environment_addCookieServlet_01 ext
 
     public void good(HttpServletRequest request, HttpServletResponse response) throws Throwable
     {
-        // Method stubs for good
         goodG2B(request, response);
         goodB2G(request, response);
     }
@@ -28,7 +26,13 @@ public class CWE113_HTTP_Response_Splitting__Environment_addCookieServlet_01 ext
     /* goodG2B() - use good source and bad sink */
     private void goodG2B(HttpServletRequest request, HttpServletResponse response) throws Throwable
     {
-        // Method stub for goodG2B
+        String data = "foo"; // Good source
+
+        if (data != null)
+        {
+            Cookie cookieSink = new Cookie("lang", data);
+            response.addCookie(cookieSink);
+        }
     }
 
     /* goodB2G() - use bad source and good sink */
