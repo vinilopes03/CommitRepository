@@ -26,7 +26,19 @@ public class CWE113_HTTP_Response_Splitting__Environment_setHeaderServlet_17 ext
 {
     public void bad(HttpServletRequest request, HttpServletResponse response) throws Throwable
     {
-        // Method signature for bad
+        String data;
+
+        /* POTENTIAL FLAW: Read data from an environment variable */
+        data = System.getenv("ADD");
+
+        for (int j = 0; j < 1; j++)
+        {
+            if (data != null)
+            {
+                /* POTENTIAL FLAW: Input not verified before inclusion in header */
+                response.setHeader("Location", "/author.jsp?lang=" + data);
+            }
+        }
     }
 
     private void goodG2B(HttpServletRequest request, HttpServletResponse response) throws Throwable
