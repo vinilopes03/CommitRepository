@@ -28,7 +28,23 @@ public class CWE113_HTTP_Response_Splitting__Environment_setHeaderServlet_14 ext
 
     private void goodG2B1(HttpServletRequest request, HttpServletResponse response) throws Throwable
     {
-        // Method signature for goodG2B1 implementation
+        String data;
+        if (IO.staticFive != 5)
+        {
+            data = null;
+        }
+        else
+        {
+            data = "foo";
+        }
+
+        if (IO.staticFive == 5)
+        {
+            if (data != null)
+            {
+                response.setHeader("Location", "/author.jsp?lang=" + data);
+            }
+        }
     }
 
     private void goodG2B2(HttpServletRequest request, HttpServletResponse response) throws Throwable
