@@ -1,3 +1,4 @@
+--- Java File Start ---
 package testcases.CWE113_HTTP_Response_Splitting.s01;
 
 import testcasesupport.*;
@@ -18,7 +19,7 @@ public class CWE113_HTTP_Response_Splitting__Environment_addCookieServlet_13 ext
 
         if (IO.STATIC_FINAL_FIVE == 5) {
             if (data != null) {
-                Cookie cookieSink = new Cookie("lang", data);
+                Cookie cookieSink = new Cookie("lang", URLEncoder.encode(data, "UTF-8"));
                 response.addCookie(cookieSink);
             }
         }
@@ -101,3 +102,4 @@ public class CWE113_HTTP_Response_Splitting__Environment_addCookieServlet_13 ext
         mainFromParent(args);
     }
 }
+--- Java File End ---
