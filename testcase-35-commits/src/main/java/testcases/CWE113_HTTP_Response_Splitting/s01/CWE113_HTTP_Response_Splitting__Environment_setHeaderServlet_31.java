@@ -11,25 +11,36 @@ public class CWE113_HTTP_Response_Splitting__Environment_setHeaderServlet_31 ext
         String dataCopy;
         {
             String data;
-            // Read data from an environment variable
             data = System.getenv("ADD");
             dataCopy = data;
         }
         {
             String data = dataCopy;
             if (data != null) {
-                // Flaw: Input not verified before inclusion in header
                 response.setHeader("Location", "/author.jsp?lang=" + data);
             }
         }
     }
 
     public void good(HttpServletRequest request, HttpServletResponse response) throws Throwable {
-        // Method signature for good
+        goodG2B(request, response);
+        goodB2G(request, response);
     }
 
     private void goodG2B(HttpServletRequest request, HttpServletResponse response) throws Throwable {
-        // Method signature for goodG2B
+        String dataCopy;
+        {
+            String data;
+            // Use a hardcoded string
+            data = "foo";
+            dataCopy = data;
+        }
+        {
+            String data = dataCopy;
+            if (data != null) {
+                response.setHeader("Location", "/author.jsp?lang=" + data);
+            }
+        }
     }
 
     private void goodB2G(HttpServletRequest request, HttpServletResponse response) throws Throwable {
