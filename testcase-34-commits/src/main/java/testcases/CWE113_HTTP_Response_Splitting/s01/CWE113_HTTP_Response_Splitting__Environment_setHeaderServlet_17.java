@@ -78,7 +78,8 @@ public class CWE113_HTTP_Response_Splitting__Environment_setHeaderServlet_17 ext
 
     public void good(HttpServletRequest request, HttpServletResponse response) throws Throwable
     {
-        // Method signature for good
+        goodG2B(request, response);
+        goodB2G(request, response);
     }
 
     public static void main(String[] args) throws ClassNotFoundException,
