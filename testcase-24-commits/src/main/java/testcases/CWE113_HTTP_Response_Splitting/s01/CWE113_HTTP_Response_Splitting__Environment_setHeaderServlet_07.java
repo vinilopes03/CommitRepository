@@ -3,6 +3,8 @@ import testcasesupport.*;
 
 import javax.servlet.http.*;
 
+import java.net.URLEncoder;
+
 public class CWE113_HTTP_Response_Splitting__Environment_setHeaderServlet_07 extends AbstractTestCaseServlet
 {
     private int privateFive = 5;
@@ -72,18 +74,58 @@ public class CWE113_HTTP_Response_Splitting__Environment_setHeaderServlet_07 ext
 
     private void goodB2G1(HttpServletRequest request, HttpServletResponse response) throws Throwable
     {
-        // Method signature for goodB2G1
+        String data;
+        if (privateFive == 5)
+        {
+            data = System.getenv("ADD");
+        }
+        else
+        {
+            data = null;
+        }
+
+        if (privateFive != 5)
+        {
+            IO.writeLine("Benign, fixed string");
+        }
+        else
+        {
+            if (data != null)
+            {
+                data = URLEncoder.encode(data, "UTF-8");
+                response.setHeader("Location", "/author.jsp?lang=" + data);
+            }
+        }
     }
 
     private void goodB2G2(HttpServletRequest request, HttpServletResponse response) throws Throwable
     {
-        // Method signature for goodB2G2
+        String data;
+        if (privateFive == 5)
+        {
+            data = System.getenv("ADD");
+        }
+        else
+        {
+            data = null;
+        }
+
+        if (privateFive == 5)
+        {
+            if (data != null)
+            {
+                data = URLEncoder.encode(data, "UTF-8");
+                response.setHeader("Location", "/author.jsp?lang=" + data);
+            }
+        }
     }
 
     public void good(HttpServletRequest request, HttpServletResponse response) throws Throwable
     {
         goodG2B1(request, response);
         goodG2B2(request, response);
+        goodB2G1(request, response);
+        goodB2G2(request, response);
     }
 
     public static void main(String[] args) throws ClassNotFoundException,
