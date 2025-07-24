@@ -23,11 +23,21 @@ public class CWE113_HTTP_Response_Splitting__Environment_addCookieServlet_01 ext
     }
 
     public void good(HttpServletRequest request, HttpServletResponse response) throws Throwable {
-        // Method implementation will be added later
+        goodG2B(request, response);
+        // goodB2G will be added later
     }
 
     private void goodG2B(HttpServletRequest request, HttpServletResponse response) throws Throwable {
-        // Method implementation will be added later
+        String data;
+
+        // FIX: Use a hardcoded string
+        data = "foo";
+
+        if (data != null) {
+            Cookie cookieSink = new Cookie("lang", data);
+            // POTENTIAL FLAW: Input not verified before inclusion in the cookie
+            response.addCookie(cookieSink);
+        }
     }
 
     private void goodB2G(HttpServletRequest request, HttpServletResponse response) throws Throwable {
