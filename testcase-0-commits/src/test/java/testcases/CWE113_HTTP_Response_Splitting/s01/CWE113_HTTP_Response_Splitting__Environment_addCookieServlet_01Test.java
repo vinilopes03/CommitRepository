@@ -22,14 +22,17 @@ public class CWE113_HTTP_Response_Splitting__Environment_addCookieServlet_01Test
         String maliciousData = "value%0d%0aSet-Cookie:sessionId=malicious";
         System.setProperty("ADD", maliciousData);
 
-        // Create an instance of the class to test
-        CWE113_HTTP_Response_Splitting__Environment_addCookieServlet_01 servlet = new CWE113_HTTP_Response_Splitting__Environment_addCookieServlet_01();
+        // Create an instance of the class to be tested
+        CWE113_HTTP_Response_Splitting__Environment_addCookieServlet_01 servlet =
+                new CWE113_HTTP_Response_Splitting__Environment_addCookieServlet_01();
 
         // Call the bad method
         servlet.bad(request, response);
 
-        // Verify that a cookie with the malicious data was added
-        verify(response).addCookie(argThat(cookie -> cookie.getValue().equals(maliciousData)));
+        // Verify that a cookie was added with the malicious data
+        verify(response, times(1)).addCookie(argThat(cookie -> 
+            cookie.getValue().equals(maliciousData)
+        ));
 
         // Clean up the environment variable
         System.clearProperty("ADD");
