@@ -50,12 +50,31 @@ public class CWE113_HTTP_Response_Splitting__Environment_addCookieServlet_31 ext
 
     public void good(HttpServletRequest request, HttpServletResponse response) throws Throwable
     {
-        // Method signature for good implementation
+        goodG2B(request, response);
+        // Method signature for goodB2G
     }
 
     private void goodG2B(HttpServletRequest request, HttpServletResponse response) throws Throwable
     {
-        // Method signature for goodG2B
+        String dataCopy;
+        {
+            String data;
+
+            // FIX: Use a hardcoded string
+            data = "foo";
+
+            dataCopy = data;
+        }
+        {
+            String data = dataCopy;
+
+            if (data != null)
+            {
+                Cookie cookieSink = new Cookie("lang", data);
+                // POTENTIAL FLAW: Input not verified before inclusion in the cookie
+                response.addCookie(cookieSink);
+            }
+        }
     }
 
     private void goodB2G(HttpServletRequest request, HttpServletResponse response) throws Throwable
