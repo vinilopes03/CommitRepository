@@ -14,7 +14,19 @@ public class CWE113_HTTP_Response_Splitting__Environment_addCookieServlet_08 ext
     }
 
     public void bad(HttpServletRequest request, HttpServletResponse response) throws Throwable {
-        // Method signature for bad case
+        String data;
+        if (privateReturnsTrue()) {
+            data = System.getenv("ADD");
+        } else {
+            data = null;
+        }
+
+        if (privateReturnsTrue()) {
+            if (data != null) {
+                Cookie cookieSink = new Cookie("lang", data);
+                response.addCookie(cookieSink);
+            }
+        }
     }
 
     private void goodG2B1(HttpServletRequest request, HttpServletResponse response) throws Throwable {
