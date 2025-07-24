@@ -6,9 +6,32 @@ import java.net.URLEncoder;
 
 public class CWE113_HTTP_Response_Splitting__Environment_setHeaderServlet_09 extends AbstractTestCaseServlet
 {
-    // 'bad' and 'goodG2B1' methods remain unchanged
+    // 'bad', 'goodG2B1', and 'goodB2G2' methods remain unchanged
 
-    private void goodB2G2(HttpServletRequest request, HttpServletResponse response) throws Throwable
+    private void goodG2B2(HttpServletRequest request, HttpServletResponse response) throws Throwable
+    {
+        String data;
+        if (IO.STATIC_FINAL_TRUE)
+        {
+            // Fix: Use a hardcoded string
+            data = "foo";
+        }
+        else
+        {
+            data = null; // Dead code, will never run
+        }
+
+        if (IO.STATIC_FINAL_TRUE)
+        {
+            if (data != null)
+            {
+                // Potential flaw: Input not verified before inclusion in header
+                response.setHeader("Location", "/author.jsp?lang=" + data);
+            }
+        }
+    }
+
+    private void goodB2G1(HttpServletRequest request, HttpServletResponse response) throws Throwable
     {
         String data;
         if (IO.STATIC_FINAL_TRUE)
@@ -21,7 +44,11 @@ public class CWE113_HTTP_Response_Splitting__Environment_setHeaderServlet_09 ext
             data = null; // Dead code, will never run
         }
 
-        if (IO.STATIC_FINAL_TRUE)
+        if (IO.STATIC_FINAL_FALSE)
+        {
+            IO.writeLine("Benign, fixed string");
+        }
+        else
         {
             if (data != null)
             {
@@ -32,7 +59,13 @@ public class CWE113_HTTP_Response_Splitting__Environment_setHeaderServlet_09 ext
         }
     }
 
-    // Remaining methods
+    public void good(HttpServletRequest request, HttpServletResponse response) throws Throwable
+    {
+        goodG2B1(request, response);
+        goodG2B2(request, response);
+        goodB2G1(request, response);
+        goodB2G2(request, response);
+    }
 
     public static void main(String[] args) throws ClassNotFoundException,
            InstantiationException, IllegalAccessException
