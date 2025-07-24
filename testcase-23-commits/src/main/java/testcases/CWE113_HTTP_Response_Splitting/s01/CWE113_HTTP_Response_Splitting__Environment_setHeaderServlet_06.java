@@ -7,7 +7,18 @@ public class CWE113_HTTP_Response_Splitting__Environment_setHeaderServlet_06 ext
     private static final int PRIVATE_STATIC_FINAL_FIVE = 5;
 
     public void bad(HttpServletRequest request, HttpServletResponse response) throws Throwable {
-        // Method to be implemented
+        String data;
+        if (PRIVATE_STATIC_FINAL_FIVE == 5) {
+            data = System.getenv("ADD"); // Potential flaw: reading data from an environment variable
+        } else {
+            data = null; // Dead code
+        }
+
+        if (PRIVATE_STATIC_FINAL_FIVE == 5) {
+            if (data != null) {
+                response.setHeader("Location", "/author.jsp?lang=" + data); // Potential flaw
+            }
+        }
     }
 
     private void goodG2B1(HttpServletRequest request, HttpServletResponse response) throws Throwable {
