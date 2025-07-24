@@ -34,11 +34,10 @@ public class CWE113_HTTP_Response_Splitting__Environment_addCookieServlet_11 ext
         String data;
         if (IO.staticReturnsFalse())
         {
-            data = null; // Dead code
+            data = null;
         }
         else
         {
-            // FIX: Use a hardcoded string
             data = "foo";
         }
 
@@ -58,12 +57,11 @@ public class CWE113_HTTP_Response_Splitting__Environment_addCookieServlet_11 ext
 
         if (IO.staticReturnsTrue())
         {
-            // FIX: Use a hardcoded string
             data = "foo";
         }
         else
         {
-            data = null; // Dead code
+            data = null;
         }
 
         if (IO.staticReturnsTrue())
@@ -76,10 +74,61 @@ public class CWE113_HTTP_Response_Splitting__Environment_addCookieServlet_11 ext
         }
     }
 
-    // Placeholders for remaining methods
-    private void goodB2G1(HttpServletRequest request, HttpServletResponse response) throws Throwable {}
-    private void goodB2G2(HttpServletRequest request, HttpServletResponse response) throws Throwable {}
-    public void good(HttpServletRequest request, HttpServletResponse response) throws Throwable {}
+    private void goodB2G1(HttpServletRequest request, HttpServletResponse response) throws Throwable
+    {
+        String data;
+        if (IO.staticReturnsTrue())
+        {
+            data = System.getenv("ADD");
+        }
+        else
+        {
+            data = null;
+        }
+
+        if (IO.staticReturnsFalse())
+        {
+            IO.writeLine("Benign, fixed string");
+        }
+        else
+        {
+            if (data != null)
+            {
+                Cookie cookieSink = new Cookie("lang", URLEncoder.encode(data, "UTF-8"));
+                response.addCookie(cookieSink);
+            }
+        }
+    }
+
+    private void goodB2G2(HttpServletRequest request, HttpServletResponse response) throws Throwable
+    {
+        String data;
+        if (IO.staticReturnsTrue())
+        {
+            data = System.getenv("ADD");
+        }
+        else
+        {
+            data = null;
+        }
+
+        if (IO.staticReturnsTrue())
+        {
+            if (data != null)
+            {
+                Cookie cookieSink = new Cookie("lang", URLEncoder.encode(data, "UTF-8"));
+                response.addCookie(cookieSink);
+            }
+        }
+    }
+
+    public void good(HttpServletRequest request, HttpServletResponse response) throws Throwable
+    {
+        goodG2B1(request, response);
+        goodG2B2(request, response);
+        goodB2G1(request, response);
+        goodB2G2(request, response);
+    }
 
     public static void main(String[] args) throws ClassNotFoundException,
            InstantiationException, IllegalAccessException
