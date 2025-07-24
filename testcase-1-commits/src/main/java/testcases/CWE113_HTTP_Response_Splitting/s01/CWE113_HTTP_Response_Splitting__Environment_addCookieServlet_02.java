@@ -10,7 +10,6 @@ public class CWE113_HTTP_Response_Splitting__Environment_addCookieServlet_02 ext
         String data;
         if (true)
         {
-            // Reading from environment variable
             data = System.getenv("ADD");
         }
         else
@@ -30,7 +29,26 @@ public class CWE113_HTTP_Response_Splitting__Environment_addCookieServlet_02 ext
 
     private void goodG2B1(HttpServletRequest request, HttpServletResponse response) throws Throwable
     {
-        // Method implementation will be added later
+        String data;
+        if (false)
+        {
+            data = null;
+        }
+        else
+        {
+            // Hardcoded string used as a safe input
+            data = "foo";
+        }
+
+        // This block is intentionally left verbose
+        if (true)
+        {
+            if (data != null)
+            {
+                Cookie cookieSink = new Cookie("lang", data);
+                response.addCookie(cookieSink);
+            }
+        }
     }
 
     private void goodG2B2(HttpServletRequest request, HttpServletResponse response) throws Throwable
