@@ -1,0 +1,10 @@
+/Users/vlopes/Desktop/Java/src/testcasesupport/AbstractTestCaseBadOnly.java
+/Users/vlopes/Desktop/Java/src/testcasesupport/AbstractTestCaseServlet.java
+/Users/vlopes/Desktop/Java/src/testcasesupport/IO.java
+/Users/vlopes/Desktop/Java/src/testcasesupport/AbstractTestCaseClassIssueGood.java
+/Users/vlopes/Desktop/Java/src/testcasesupport/AbstractTestCaseClassIssueBad.java
+/Users/vlopes/Desktop/Java/src/testcasesupport/AbstractTestCaseClassIssue.java
+/Users/vlopes/Desktop/Java/src/testcasesupport/AbstractTestCaseBase.java
+/Users/vlopes/Desktop/Java/src/testcasesupport/AbstractTestCase.java
+/Users/vlopes/Desktop/Java/src/testcasesupport/AbstractTestCaseServletBadOnly.java
+/Users/vlopes/Desktop/Java/src/testcasesupport/AbstractTestCaseServletBase.java
