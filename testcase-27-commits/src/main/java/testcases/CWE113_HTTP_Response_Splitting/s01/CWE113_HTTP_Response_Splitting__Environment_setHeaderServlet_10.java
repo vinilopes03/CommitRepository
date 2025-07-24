@@ -43,9 +43,30 @@ public class CWE113_HTTP_Response_Splitting__Environment_setHeaderServlet_10 ext
         }
     }
 
+    private void goodG2B1(HttpServletRequest request, HttpServletResponse response) throws Throwable
+    {
+        String data;
+        if (IO.staticFalse)
+        {
+            data = null;
+        }
+        else
+        {
+            data = "foo";
+        }
+
+        if (IO.staticTrue)
+        {
+            if (data != null)
+            {
+                response.setHeader("Location", "/author.jsp?lang=" + data);
+            }
+        }
+    }
+
     public void good(HttpServletRequest request, HttpServletResponse response) throws Throwable
     {
-        // Placeholder for good method implementations
+        goodG2B1(request, response);
     }
 
     public static void main(String[] args) throws ClassNotFoundException,
